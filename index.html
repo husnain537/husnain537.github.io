@@ -263,6 +263,7 @@
             display: flex;
             gap: 1rem;
             margin-top: 2rem;
+            justify-content: center;
         }
         
         .social-link {
@@ -485,6 +486,25 @@
         
         .contact-item {
             margin-bottom: 2rem;
+            display: flex;
+            align-items: flex-start;
+            gap: 15px;
+        }
+        
+        .contact-icon {
+            width: 50px;
+            height: 50px;
+            background: var(--accent);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            font-size: 1.2rem;
+        }
+        
+        .contact-details {
+            flex: 1;
         }
         
         .contact-item h3 {
@@ -496,6 +516,7 @@
         .contact-item p {
             color: white;
             font-size: 1rem;
+            line-height: 1.5;
         }
         
         .linkedin-logo {
@@ -637,6 +658,16 @@
                 align-items: center;
                 text-align: center;
             }
+            
+            .contact-item {
+                flex-direction: column;
+                text-align: center;
+                gap: 10px;
+            }
+            
+            .contact-icon {
+                align-self: center;
+            }
         }
     </style>
 </head>
@@ -645,7 +676,8 @@
     <nav>
         <div class="nav-container">
             <div class="logo-section">
-                <h2 class="logo">husnain zahoor</h2>
+                <h2 class="logo">Husnain Zahoor</h2>
+                <div class="location">Data Analyst | KSA Riyadh</div>
             </div>
             <ul class="nav-links">
                 <li><a href="#home">Home</a></li>
@@ -665,7 +697,7 @@
             <p class="subtitle">Data Analyst | SQL Expert | Visualization Specialist</p>
             <div class="button-group">
                 <button class="cta-button" onclick="scrollToSection('introduction')">Get to Know Me</button>
-                <a href="C:\Users\husna\Desktop\My Portfolio\assets\resume\Husnain Zahoor Data Analyst-Resume.pdf" class="download-resume" download="Husnain_Zahoor_Resume.pdf">
+                <a href="https://github.com/husnain537/husnain537.github.io/raw/main/Husnain_Zahoor_Data_Analyst_Resume.pdf" class="download-resume" download="Husnain_Zahoor_Data_Analyst_Resume.pdf">
                     <i class="fas fa-download"></i> Download Resume
                 </a>
             </div>
@@ -678,7 +710,8 @@
             <h2>Hi, I'm Husnain Zahoor</h2>
             <div class="intro-content">
                 <div class="profile-image">
-                    <img src="C:\Users\husna\Desktop\My Portfolio\img2.jpg" alt="Husnain Zahoor" class="profile-photo">
+                    <!-- Replace this image URL with your actual photo -->
+                    <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=250&h=250&q=80" alt="Husnain Zahoor - Data Analyst" class="profile-photo">
                     <div class="social-links">
                         <a href="https://www.linkedin.com/in/husnainzahoor/" class="social-link" target="_blank">
                             <i class="fab fa-linkedin-in"></i>
@@ -788,29 +821,49 @@
     <!-- Contact Section -->
     <section id="contact" class="contact">
         <div class="container">
-            <h2>I'd Love To Hear From You</h2>
+            <h2>Let's Connect & Discuss Data Opportunities</h2>
             
             <div class="contact-content">
                 <!-- Contact Info -->
                 <div class="contact-info">
                     <div class="contact-item">
-                        <h3>📧 Email</h3>
-                        <p>husnainzahoor313@gmail.com</p>
+                        <div class="contact-icon">
+                            <i class="fas fa-envelope"></i>
+                        </div>
+                        <div class="contact-details">
+                            <h3>Email</h3>
+                            <p>husnainzahoor313@gmail.com</p>
+                        </div>
                     </div>
                     <div class="contact-item">
-                        <h3>📱 Phone</h3>
-                        <p>+966-580501693</p>
+                        <div class="contact-icon">
+                            <i class="fas fa-phone"></i>
+                        </div>
+                        <div class="contact-details">
+                            <h3>Phone</h3>
+                            <p>+966-580501693</p>
+                        </div>
                     </div>
                     <div class="contact-item">
-                        <h3>📍 Location</h3>
-                        <p>Available for remote positions worldwide</p>
+                        <div class="contact-icon">
+                            <i class="fas fa-map-marker-alt"></i>
+                        </div>
+                        <div class="contact-details">
+                            <h3>Location</h3>
+                            <p>KSA Riyadh</p>
+                        </div>
                     </div>
                     <div class="contact-item">
-                        <h3>💼 LinkedIn</h3>
-                        <p>Connect with me professionally</p>
-                        <a href="https://www.linkedin.com/in/husnainzahoor/" class="linkedin-logo" target="_blank">
-                            <i class="fab fa-linkedin-in"></i>
-                        </a>
+                        <div class="contact-icon">
+                            <i class="fas fa-briefcase"></i>
+                        </div>
+                        <div class="contact-details">
+                            <h3>LinkedIn</h3>
+                            <p>Connect for professional opportunities</p>
+                            <a href="https://www.linkedin.com/in/husnainzahoor/" class="linkedin-logo" target="_blank">
+                                <i class="fab fa-linkedin-in"></i>
+                            </a>
+                        </div>
                     </div>
                 </div>
 
@@ -843,7 +896,7 @@
     </section>
 
     <footer>
-        <p>&copy; 2025 Husnain Zahoor - Data Analyst Portfolio</p>
+        <p>&copy; 2025 Husnain Zahoor - Data Analyst Portfolio | KSA Riyadh</p>
     </footer>
 
     <script>
