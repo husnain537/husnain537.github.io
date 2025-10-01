@@ -17,6 +17,7 @@
             line-height: 1.6;
             color: #333;
             scroll-behavior: smooth;
+            padding-top: 80px; /* Added to prevent content hiding behind fixed nav */
         }
         
         /* Professional Color Scheme */
@@ -28,10 +29,9 @@
             --dark: #2C3E50;       /* Dark */
         }
         
-        /* Navigation - Professional */
+        /* Navigation - Professional - FIXED */
         nav {
-            background: rgba(255, 255, 255, 0.95);
-            backdrop-filter: blur(10px);
+            background: rgba(255, 255, 255, 0.98);
             padding: 1rem 0;
             position: fixed;
             width: 100%;
@@ -79,6 +79,12 @@
             list-style: none;
             gap: 2rem;
             align-items: center;
+            margin: 0;
+            padding: 0;
+        }
+        
+        .nav-links li {
+            display: inline-block;
         }
         
         .nav-links a {
@@ -87,6 +93,7 @@
             font-weight: 500;
             transition: color 0.3s;
             position: relative;
+            white-space: nowrap;
         }
         
         .nav-links a:hover {
@@ -119,6 +126,7 @@
             display: flex;
             align-items: center;
             gap: 8px;
+            white-space: nowrap;
         }
         
         .download-resume:hover {
@@ -611,13 +619,16 @@
         
         /* Responsive Design */
         @media (max-width: 768px) {
+            body {
+                padding-top: 120px; /* More space for mobile nav */
+            }
+            
             .hero-content h1 {
                 font-size: 2.5rem;
             }
             
             .nav-links {
                 gap: 1rem;
-                flex-direction: column;
             }
             
             .download-resume {
@@ -668,28 +679,42 @@
             .contact-icon {
                 align-self: center;
             }
+            
+            /* Mobile nav layout */
+            .nav-container {
+                flex-direction: column;
+                gap: 1rem;
+                padding: 1rem;
+            }
+            
+            .nav-links {
+                flex-wrap: wrap;
+                justify-content: center;
+            }
         }
     </style>
 </head>
 <body>
-    <!-- Navigation -->
- <!-- Navigation -->
-<nav>
-    <div class="nav-container">
-        <div class="logo-section">
-            <h2 class="logo">Husnain Zahoor</h2>
-            <div class="location">Data Analyst | KSA Riyadh</div>
+    <!-- Navigation - FIXED -->
+    <nav>
+        <div class="nav-container">
+            <div class="logo-section">
+                <div class="logo">Husnain Zahoor</div>
+                <div class="location">Data Analyst | KSA Riyadh</div>
+            </div>
+            <ul class="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#introduction">Introduction</a></li>
+                <li><a href="#education">Education</a></li>
+                <li><a href="#skills">Expertise</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#contact">Contact</a></li>
+                <li><a href="resume.pdf" class="download-resume" download>
+                    <i class="fas fa-download"></i> Download Resume
+                </a></li>
+            </ul>
         </div>
-        <ul class="nav-links">
-            <li><a href="#home">Home</a></li>
-            <li><a href="#introduction">Introduction</a></li>
-            <li><a href="#education">Education</a></li>
-            <li><a href="#skills">Expertise</a></li>
-            <li><a href="#projects">Projects</a></li>
-            <li><a href="#contact">Contact</a></li>
-        </ul>
-    </div>
-</nav>
+    </nav>
 
     <!-- Hero Section -->
     <section id="home" class="hero">
@@ -698,20 +723,20 @@
             <p class="subtitle">Data Analyst | SQL Expert | Visualization Specialist</p>
             <div class="button-group">
                 <button class="cta-button" onclick="scrollToSection('introduction')">Get to Know Me</button>
-                <a href="Husnain_Zahoor_Resume.pdf" class="download-resume" download="Husnain_Zahoor_Resume.pdf">
+                <a href="resume.pdf" class="download-resume" download>
                     <i class="fas fa-download"></i> Download Resume
                 </a>
             </div>
         </div>
     </section>
 
+    <!-- Rest of your sections remain the same -->
     <!-- Introduction Section with Photo -->
     <section id="introduction" class="introduction">
         <div class="container">
             <h2>Hi, I'm Husnain Zahoor</h2>
             <div class="intro-content">
                 <div class="profile-image">
-                    <!-- Replace this image URL with your actual photo -->
                     <img src="husnain.img.jpg" alt="Husnain Zahoor - Data Analyst" class="profile-photo">
                     <div class="social-links">
                         <a href="https://www.linkedin.com/in/husnainzahoor/" class="social-link" target="_blank">
