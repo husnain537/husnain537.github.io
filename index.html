@@ -313,40 +313,93 @@
             margin-bottom: 0.5rem;
         }
         
-        /* Education Section */
+        /* Education Section - Less Prominent */
         .education {
-            background: white;
+            background: #f8f9fa;
+            padding: 50px 2rem;
         }
         
         .education-grid {
             display: grid;
             gap: 2rem;
-            max-width: 800px;
+            max-width: 600px;
             margin: 0 auto;
         }
         
         .education-item {
-            background: var(--light);
-            padding: 2rem;
-            border-radius: 10px;
-            border-left: 4px solid var(--accent);
+            background: white;
+            padding: 1.5rem;
+            border-radius: 8px;
+            border-left: 3px solid var(--accent);
+            text-align: center;
         }
         
         .education-item h3 {
             color: var(--primary);
             margin-bottom: 0.5rem;
-            font-size: 1.3rem;
+            font-size: 1.1rem;
         }
         
         .education-meta {
             color: var(--secondary);
             font-weight: 500;
             margin-bottom: 1rem;
+            font-size: 0.9rem;
         }
         
         .education-details {
             color: #666;
             line-height: 1.6;
+            font-size: 0.9rem;
+        }
+        
+        /* Experience Section */
+        .experience {
+            background: white;
+        }
+        
+        .experience-grid {
+            display: grid;
+            gap: 2rem;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .experience-item {
+            background: var(--light);
+            padding: 2rem;
+            border-radius: 10px;
+            border-left: 4px solid var(--accent);
+        }
+        
+        .experience-item h3 {
+            color: var(--primary);
+            margin-bottom: 0.5rem;
+            font-size: 1.3rem;
+        }
+        
+        .company {
+            color: var(--secondary);
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            font-size: 1.1rem;
+        }
+        
+        .duration {
+            color: #666;
+            font-style: italic;
+            margin-bottom: 1rem;
+            font-size: 0.9rem;
+        }
+        
+        .experience-item ul {
+            color: #555;
+            line-height: 1.6;
+            padding-left: 1.5rem;
+        }
+        
+        .experience-item li {
+            margin-bottom: 0.5rem;
         }
         
         /* About Section */
@@ -705,6 +758,7 @@
             <ul class="nav-links">
                 <li><a href="#home">Home</a></li>
                 <li><a href="#introduction">Introduction</a></li>
+                <li><a href="#experience">Experience</a></li>
                 <li><a href="#education">Education</a></li>
                 <li><a href="#skills">Expertise</a></li>
                 <li><a href="#projects">Projects</a></li>
@@ -730,7 +784,6 @@
         </div>
     </section>
 
-    <!-- Rest of your sections remain the same -->
     <!-- Introduction Section with Photo -->
     <section id="introduction" class="introduction">
         <div class="container">
@@ -746,27 +799,47 @@
                 </div>
                 <div class="intro-text-content">
                     <p class="intro-text">
-                        A passionate Data Analyst with a strong foundation in Computer Engineering. I specialize in transforming raw data into meaningful insights that drive business decisions and create tangible value.
+                        A passionate Data Analyst with a strong foundation in analytical thinking and problem-solving. I specialize in transforming raw data into meaningful insights that drive business decisions and create tangible value.
                     </p>
                     <p class="intro-text">
-                        With expertise in advanced Excel, data visualization, and statistical analysis, I bridge the gap between technical data processing and business strategy. My engineering background gives me a unique perspective on problem-solving and analytical thinking.
+                        With expertise in advanced Excel, data visualization, and statistical analysis, I bridge the gap between technical data processing and business strategy. My professional experience in project planning has honed my ability to deliver data-driven solutions in real-world scenarios.
                     </p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Education Section -->
+    <!-- Experience Section -->
+    <section id="experience" class="experience">
+        <div class="container">
+            <h2>Professional Experience</h2>
+            <div class="experience-grid">
+                <div class="experience-item">
+                    <h3>Planning Engineer</h3>
+                    <p class="company">Construction Company | KSA Riyadh</p>
+                    <p class="duration">2023 - Present</p>
+                    <ul>
+                        <li>Develop and maintain project schedules using analytical methodologies</li>
+                        <li>Coordinate with cross-functional teams to track project milestones</li>
+                        <li>Monitor project progress and performance metrics</li>
+                        <li>Utilize data analysis for resource allocation and timeline optimization</li>
+                        <li>Generate progress reports and performance dashboards</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Education Section - Less Prominent -->
     <section id="education" class="education">
         <div class="container">
-            <h2>Education</h2>
+            <h2 style="font-size: 2rem; margin-bottom: 2rem;">Education</h2>
             <div class="education-grid">
                 <div class="education-item">
                     <h3>Bachelor of Computer Engineering</h3>
                     <div class="education-meta">KFUEIT University of Engineering and Technology RYK • 2019-2023</div>
                     <div class="education-details">
-                        <p>Specialized in data structures, database management systems, and software engineering. Completed coursework in statistical analysis, machine learning, and data visualization techniques.</p>
-                        <p><strong>Relevant Courses:</strong> Database Systems, Statistics for Engineers, Business Intelligence</p>
+                        <p>Foundation in analytical thinking and problem-solving methodologies</p>
                     </div>
                 </div>
             </div>
