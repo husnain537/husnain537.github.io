@@ -249,7 +249,7 @@
             margin: 0 auto;
         }
         
-        /* FIXED: Profile Photo - Now will fit properly */
+        /* FIXED: Profile Photo - Changed to rectangular with soft corners */
         .profile-image {
             display: flex;
             flex-direction: column;
@@ -259,8 +259,8 @@
         
         .profile-photo-container {
             width: 250px;
-            height: 250px;
-            border-radius: 50%;
+            height: 300px; /* Increased height for better face display */
+            border-radius: 15px; /* Soft rounded corners instead of circle */
             overflow: hidden;
             border: 5px solid white;
             box-shadow: 0 10px 30px rgba(0,0,0,0.1);
@@ -717,8 +717,8 @@
             }
             
             .profile-photo-container {
-                width: 200px;
-                height: 200px;
+                width: 220px;
+                height: 280px;
             }
             
             .intro-text {
