@@ -17,7 +17,7 @@
             line-height: 1.6;
             color: #1e293b;
             scroll-behavior: smooth;
-            background: #ffffff;
+            background: #f8fafc;
         }
         
         :root {
@@ -30,17 +30,15 @@
             --card-bg: #ffffff;
         }
         
-        /* Navigation */
+        /* Navigation - More Professional */
         nav {
-            background: rgba(255, 255, 255, 0.95);
-            backdrop-filter: blur(10px);
+            background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
             padding: 1.2rem 0;
             position: fixed;
             width: 100%;
             top: 0;
             z-index: 1000;
-            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
-            border-bottom: 1px solid rgba(0,0,0,0.05);
+            box-shadow: 0 4px 20px rgba(0,0,0,0.3);
         }
         
         .nav-container {
@@ -52,23 +50,11 @@
             padding: 0 3rem;
         }
         
-        .logo-section {
-            display: flex;
-            flex-direction: column;
-            gap: 2px;
-        }
-
         .logo {
-            color: var(--primary);
-            font-size: 1.4rem;
+            color: white;
+            font-size: 1.5rem;
             font-weight: 700;
             letter-spacing: -0.5px;
-        }
-
-        .location {
-            color: var(--secondary);
-            font-size: 0.85rem;
-            font-weight: 500;
         }
         
         .nav-links {
@@ -79,16 +65,16 @@
         }
         
         .nav-links a {
-            color: var(--text);
+            color: rgba(255, 255, 255, 0.9);
             text-decoration: none;
             font-weight: 500;
             font-size: 0.95rem;
-            transition: color 0.3s;
+            transition: all 0.3s;
             position: relative;
         }
         
         .nav-links a:hover {
-            color: var(--secondary);
+            color: var(--accent);
         }
         
         .nav-links a::after {
@@ -98,7 +84,7 @@
             height: 2px;
             bottom: -5px;
             left: 0;
-            background: var(--secondary);
+            background: var(--accent);
             transition: width 0.3s;
         }
         
@@ -212,14 +198,32 @@
             border-color: var(--accent);
         }
         
-        /* Sections */
+        /* Sections with Data Pattern Background */
         section {
             padding: 100px 3rem;
+            position: relative;
+        }
+        
+        section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: 
+                linear-gradient(90deg, rgba(6, 182, 212, 0.03) 1px, transparent 1px),
+                linear-gradient(rgba(6, 182, 212, 0.03) 1px, transparent 1px);
+            background-size: 50px 50px;
+            pointer-events: none;
+            opacity: 0.5;
         }
         
         .container {
             max-width: 1400px;
             margin: 0 auto;
+            position: relative;
+            z-index: 1;
         }
         
         h2 {
@@ -246,7 +250,7 @@
         
         /* Introduction Section */
         .introduction {
-            background: var(--light-bg);
+            background: linear-gradient(135deg, #f8fafc 0%, #e0f2fe 100%);
         }
         
         .intro-content {
@@ -267,20 +271,33 @@
             top: 120px;
         }
         
+        /* CIRCULAR PHOTO - Professional Style */
         .profile-photo-container {
             width: 280px;
-            height: 373px;
-            border-radius: 16px;
+            height: 280px;
+            border-radius: 50%;
             overflow: hidden;
-            border: 4px solid white;
-            box-shadow: 0 20px 50px rgba(0,0,0,0.15);
+            box-shadow: 0 20px 60px rgba(6, 182, 212, 0.3);
             background: white;
+            position: relative;
+        }
+        
+        .profile-photo-container::before {
+            content: '';
+            position: absolute;
+            inset: -3px;
+            border-radius: 50%;
+            padding: 3px;
+            background: linear-gradient(135deg, #06b6d4, #0ea5e9);
+            -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+            -webkit-mask-composite: xor;
+            mask-composite: exclude;
         }
         
         .profile-photo {
             width: 100%;
             height: 100%;
-            object-fit: contain;
+            object-fit: cover;
             object-position: center;
         }
         
@@ -392,7 +409,7 @@
         
         /* Projects Section */
         .projects {
-            background: var(--light-bg);
+            background: linear-gradient(135deg, #f8fafc 0%, #e0f2fe 100%);
         }
         
         .projects-grid {
@@ -515,7 +532,7 @@
         
         /* Education Section */
         .education {
-            background: var(--light-bg);
+            background: linear-gradient(135deg, #f8fafc 0%, #e0f2fe 100%);
             padding: 80px 3rem;
         }
         
@@ -749,10 +766,7 @@
 <body>
     <nav>
         <div class="nav-container">
-            <div class="logo-section">
-                <div class="logo">Husnain Zahoor</div>
-                <div class="location">Data Analyst | Riyadh, KSA</div>
-            </div>
+            <div class="logo">Husnain Zahoor</div>
             <ul class="nav-links">
                 <li><a href="#home">Home</a></li>
                 <li><a href="#introduction">About</a></li>
@@ -1012,9 +1026,9 @@
         window.addEventListener('scroll', function() {
             const nav = document.querySelector('nav');
             if (window.scrollY > 50) {
-                nav.style.boxShadow = '0 4px 20px rgba(0,0,0,0.15)';
+                nav.style.boxShadow = '0 6px 25px rgba(0,0,0,0.4)';
             } else {
-                nav.style.boxShadow = '0 1px 3px rgba(0,0,0,0.1)';
+                nav.style.boxShadow = '0 4px 20px rgba(0,0,0,0.3)';
             }
         });
 
