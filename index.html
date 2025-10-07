@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Husnain Zahoor - Data Analyst</title>
+    <title>husnain zahoor - Data Analyst</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
         * {
@@ -976,7 +976,8 @@
                     </div>
                 </div>
 
-                <form class="contact-form">
+                <!-- FIXED: Formspree Contact Form -->
+                <form class="contact-form" action="https://formspree.io/f/mwprnpeg" method="POST">
                     <div class="form-group">
                         <label for="name">Your Name</label>
                         <input type="text" id="name" name="name" required placeholder="John Doe">
@@ -1032,13 +1033,8 @@
             }
         });
 
-        document.querySelector('.contact-form').addEventListener('submit', function(e) {
-            e.preventDefault();
-            const name = document.getElementById('name').value;
-            const email = document.getElementById('email').value;
-            alert(`Thank you, ${name}! Your message has been received. I'll get back to you at ${email} soon.`);
-            this.reset();
-        });
+        // REMOVED: The JavaScript form handler that was blocking Formspree
+        // Formspree now handles the form submission automatically
     </script>
 </body>
 </html>
