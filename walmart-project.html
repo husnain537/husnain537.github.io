@@ -27,7 +27,7 @@
             --light-bg: #f8fafc;
         }
         
-        /* Professional Project Header */
+        /* Professional Project Header - Matching Homepage */
         .project-header {
             background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
             color: white;
@@ -190,13 +190,14 @@
             color: var(--primary);
         }
         
-        /* Info Cards */
+        /* Info Cards - Matching Homepage */
         .info-card {
-            background: var(--light-bg);
+            background: #f8fafc;
             border-radius: 12px;
             padding: 2rem;
             margin: 2rem 0;
             border-left: 4px solid var(--secondary);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
         }
         
         .info-card h4 {
@@ -206,7 +207,7 @@
             font-weight: 600;
         }
         
-        /* Stats Grid */
+        /* Stats Grid - Matching Homepage */
         .stats-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
@@ -220,6 +221,7 @@
             padding: 1.5rem;
             border-radius: 12px;
             text-align: center;
+            box-shadow: 0 10px 20px rgba(6, 182, 212, 0.2);
         }
         
         .stat-value {
@@ -235,7 +237,7 @@
             margin-top: 0.5rem;
         }
         
-        /* Tech Tags */
+        /* Tech Tags - Matching Homepage */
         .tech-tags {
             display: flex;
             flex-wrap: wrap;
@@ -252,7 +254,7 @@
             font-weight: 600;
         }
         
-        /* Sidebar */
+        /* Sidebar - Matching Homepage */
         .sidebar-card {
             background: white;
             border-radius: 12px;
@@ -270,7 +272,7 @@
             border-bottom: 2px solid #e2e8f0;
         }
         
-        .download-btn {
+        .project-btn {
             display: inline-flex;
             align-items: center;
             gap: 10px;
@@ -284,16 +286,18 @@
             justify-content: center;
             transition: all 0.3s;
             margin-top: 1rem;
+            border: none;
+            cursor: pointer;
         }
         
-        .download-btn:hover {
+        .project-btn:hover {
             transform: translateY(-3px);
             box-shadow: 0 10px 30px rgba(6, 182, 212, 0.3);
         }
         
-        /* Footer */
+        /* Footer - Matching Homepage */
         footer {
-            background: #0f172a;
+            background: #020617;
             color: #94a3b8;
             text-align: center;
             padding: 3rem 2rem;
@@ -381,13 +385,6 @@
             <p class="project-subtitle">Comprehensive analysis of 65K+ sales records to identify performance drivers and quantify holiday impact on store revenue.</p>
             
             <div class="project-meta">
-                <div class="meta-item">
-                    <i class="fas fa-calendar-alt"></i>
-                    <div>
-                        <div class="meta-label">Project Date</div>
-                        <div class="meta-value">November 2024</div>
-                    </div>
-                </div>
                 <div class="meta-item">
                     <i class="fas fa-tags"></i>
                     <div>
@@ -505,12 +502,11 @@
                 <div class="sidebar-card">
                     <h3>Project Details</h3>
                     <p><strong>Client:</strong> Walmart Stores Analysis</p>
-                    <p><strong>Duration:</strong> 3 Weeks</p>
                     <p><strong>Data Size:</strong> 65,000+ Records</p>
                     <p><strong>Analysis Type:</strong> Retail Performance</p>
                     <p><strong>Key Metrics:</strong> Sales, Efficiency, Holiday Impact</p>
                     
-                    <a href="https://tinyurl.com/husnainzahoor-walmart" target="_blank" class="download-btn">
+                    <a href="https://tinyurl.com/husnainzahoor-walmart" target="_blank" class="project-btn">
                         <i class="fas fa-external-link-alt"></i> View Full Analysis
                     </a>
                 </div>
