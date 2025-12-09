@@ -908,55 +908,105 @@
         </div>
     </section>
 
-    <section id="projects" class="projects">
-        <div class="container">
-            <h2>Featured Projects</h2>
-            <div class="projects-grid">
-                <div class="project-card">
-                    <div class="project-header">
-                        <h3>Walmart Sales Performance Analysis</h3>
+  <!-- Find the Projects Section in your HTML (around line 250-300) -->
+<!-- Replace the ENTIRE <section id="projects" class="projects"> section with this code: -->
+
+<section id="projects" class="projects">
+    <div class="container">
+        <h2>Featured Projects</h2>
+        <div class="projects-grid">
+            <!-- Project 1: Walmart Sales Analysis -->
+            <div class="project-card">
+                <div class="project-header">
+                    <h3>Walmart Store Sales Performance Analysis</h3>
+                </div>
+                <div class="project-body">
+                    <p><strong>Business Problem:</strong> Identify why certain stores outperform others and assess how holiday seasons influence weekly sales patterns.</p>
+                    <p><strong>Analysis:</strong> Analyzed 65K+ rows of Walmart sales data to uncover key drivers of store performance and quantify holiday effects.</p>
+                    <p><strong>Key Insights:</strong></p>
+                    <ul style="color: var(--text); margin-bottom: 1rem; padding-left: 1.2rem;">
+                        <li>Holiday periods drove <strong>52% of total sales</strong> with strong spikes in Dec 2022 & 2023</li>
+                        <li>Strong positive correlation (0.75) between Sales & Sales per Sq. Ft, indicating store efficiency drives revenue</li>
+                        <li>External factors showed minimal effect on sales (unemployment, temperature, fuel price correlations below ±0.05)</li>
+                    </ul>
+                    <p><strong>Tools & Approach:</strong> Advanced Excel, Pivot Tables, XLOOKUP, statistical analysis, hypothesis testing</p>
+                    <p><strong>Recommendations:</strong> Strengthen holiday promotions in low-performing stores, improve seasonal inventory planning, focus on weaker store types and departments.</p>
+                    <div class="tech-tags">
+                        <span class="tech-tag">Advanced Excel</span>
+                        <span class="tech-tag">Pivot Tables</span>
+                        <span class="tech-tag">XLOOKUP</span>
+                        <span class="tech-tag">Statistical Analysis</span>
+                        <span class="tech-tag">Data Cleaning</span>
                     </div>
-                    <div class="project-body">
-                        <p>Comprehensive sales analysis using advanced Excel features including Pivot Tables, data visualization, and statistical analysis to identify sales trends and performance metrics.</p>
-                        <div class="tech-tags">
-                            <span class="tech-tag">Advanced Excel</span>
-                            <span class="tech-tag">Pivot Tables</span>
-                            <span class="tech-tag">Data Viz</span>
-                            <span class="tech-tag">Statistics</span>
-                        </div>
+                    <div style="margin-top: 1.5rem;">
+                        <a href="https://tinyurl.com/husnainzahoor-walmart" target="_blank" 
+                           style="background: linear-gradient(135deg, var(--secondary), var(--accent)); 
+                                  color: white; padding: 8px 16px; border-radius: 6px; 
+                                  text-decoration: none; font-weight: 600; font-size: 0.9rem;
+                                  display: inline-block; transition: all 0.3s;">
+                            <i class="fas fa-external-link-alt" style="margin-right: 5px;"></i> View Full Analysis
+                        </a>
                     </div>
                 </div>
-                <div class="project-card">
-                    <div class="project-header">
-                        <h3>Customer Segmentation Analysis</h3>
+            </div>
+
+            <!-- Project 2: Cliqz Search Engine Analysis -->
+            <div class="project-card">
+                <div class="project-header">
+                    <h3>Cliqz Search Engine – User Behavior & Forecasting Analysis</h3>
+                </div>
+                <div class="project-body">
+                    <p><strong>Objective:</strong> Analyze user search behavior patterns and forecast query volume for optimal server capacity planning.</p>
+                    <p><strong>Analysis:</strong> Analyzed 70K+ search query records across countries, hours, and query types to uncover user-behavior patterns.</p>
+                    <p><strong>Key Achievements:</strong></p>
+                    <ul style="color: var(--text); margin-bottom: 1rem; padding-left: 1.2rem;">
+                        <li>Built time-series forecasting model predicting <strong>~2.7K hourly queries</strong></li>
+                        <li>Recommended <strong>~3K queries/hour server capacity</strong> for stable performance</li>
+                        <li>Designed interactive Tableau dashboards highlighting search volume trends and country comparisons</li>
+                        <li>Delivered data story linking insights to technical decisions (server scaling & optimization)</li>
+                    </ul>
+                    <p><strong>Tools & Approach:</strong> Tableau, Advanced Excel (data cleaning, XLOOKUP, timestamp conversions), time-series forecasting</p>
+                    <div class="tech-tags">
+                        <span class="tech-tag">Tableau</span>
+                        <span class="tech-tag">Data Visualization</span>
+                        <span class="tech-tag">Time-Series Forecasting</span>
+                        <span class="tech-tag">Advanced Excel</span>
+                        <span class="tech-tag">Data Cleaning</span>
                     </div>
-                    <div class="project-body">
-                        <p>K-means clustering analysis to segment customers based on purchasing behavior and demographics for targeted marketing strategies.</p>
-                        <div class="tech-tags">
-                            <span class="tech-tag">Python</span>
-                            <span class="tech-tag">Scikit-learn</span>
-                            <span class="tech-tag">Pandas</span>
-                            <span class="tech-tag">Clustering</span>
-                        </div>
+                    <div style="margin-top: 1.5rem;">
+                        <a href="https://public.tableau.com/app/profile/husnain.zahoor/viz/CliqzProject/Story" target="_blank" 
+                           style="background: linear-gradient(135deg, var(--secondary), var(--accent)); 
+                                  color: white; padding: 8px 16px; border-radius: 6px; 
+                                  text-decoration: none; font-weight: 600; font-size: 0.9rem;
+                                  display: inline-block; transition: all 0.3s;">
+                            <i class="fas fa-external-link-alt" style="margin-right: 5px;"></i> View Tableau Dashboard
+                        </a>
                     </div>
                 </div>
-                <div class="project-card">
-                    <div class="project-header">
-                        <h3>Financial Data Analysis</h3>
-                    </div>
-                    <div class="project-body">
-                        <p>Comprehensive analysis of financial datasets with risk assessment and investment insights using statistical methods and data visualization.</p>
-                        <div class="tech-tags">
-                            <span class="tech-tag">Excel</span>
-                            <span class="tech-tag">Power BI</span>
-                            <span class="tech-tag">Statistics</span>
-                            <span class="tech-tag">Finance</span>
-                        </div>
+            </div>
+
+            <!-- Project 3: Placeholder for your third project -->
+            <div class="project-card">
+                <div class="project-header">
+                    <h3>Financial Data Analysis & Risk Assessment</h3>
+                </div>
+                <div class="project-body">
+                    <p><strong>Currently in progress:</strong> Comprehensive analysis of financial datasets with risk assessment and investment insights.</p>
+                    <p><strong>Skills Demonstrated:</strong> Financial modeling, risk analysis, statistical methods, and data visualization to support investment decisions.</p>
+                    <p><strong>Expected Tools:</strong> Excel, Power BI, Python (Pandas, NumPy), statistical analysis libraries.</p>
+                    <p><em>This project is currently being expanded with more detailed financial analysis and visualization components.</em></p>
+                    <div class="tech-tags">
+                        <span class="tech-tag">Financial Analysis</span>
+                        <span class="tech-tag">Risk Assessment</span>
+                        <span class="tech-tag">Power BI</span>
+                        <span class="tech-tag">Statistical Modeling</span>
+                        <span class="tech-tag">Data Visualization</span>
                     </div>
                 </div>
             </div>
         </div>
-    </section>
+    </div>
+</section>
 
     <section id="experience" class="experience">
         <div class="container">
