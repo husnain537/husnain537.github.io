@@ -413,6 +413,9 @@
             overflow: hidden;
             border: 1px solid #e2e8f0;
             transition: all 0.3s;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
         }
         
         .project-card:hover {
@@ -435,18 +438,22 @@
         
         .project-body {
             padding: 2rem;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
         }
         
         .project-body p {
             color: var(--text);
             line-height: 1.7;
-            margin-bottom: 1.5rem;
+            margin-bottom: 1rem;
         }
         
         .tech-tags {
             display: flex;
             flex-wrap: wrap;
             gap: 0.6rem;
+            margin-bottom: 1.5rem;
         }
         
         .tech-tag {
@@ -456,6 +463,155 @@
             border-radius: 20px;
             font-size: 0.85rem;
             font-weight: 600;
+        }
+        
+        /* Modal Styles - NEW ADDITION */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            z-index: 2000;
+            overflow-y: auto;
+            animation: fadeIn 0.3s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        .modal-content {
+            background: white;
+            margin: 50px auto;
+            max-width: 800px;
+            border-radius: 16px;
+            box-shadow: 0 25px 50px rgba(0,0,0,0.3);
+            animation: slideUp 0.4s ease;
+        }
+
+        @keyframes slideUp {
+            from { transform: translateY(50px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+
+        .modal-header {
+            background: linear-gradient(135deg, #0ea5e9, #06b6d4);
+            padding: 2rem;
+            color: white;
+            border-radius: 16px 16px 0 0;
+            position: relative;
+        }
+
+        .modal-header h3 {
+            font-size: 1.8rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .modal-body {
+            padding: 2.5rem;
+            max-height: 70vh;
+            overflow-y: auto;
+        }
+
+        .close-modal {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: rgba(255,255,255,0.2);
+            border: none;
+            color: white;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            font-size: 1.2rem;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .close-modal:hover {
+            background: rgba(255,255,255,0.3);
+            transform: rotate(90deg);
+        }
+
+        .project-highlights {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin: 2rem 0;
+            padding: 1.5rem;
+            background: #f8fafc;
+            border-radius: 12px;
+            border-left: 4px solid var(--secondary);
+        }
+
+        .highlight-item {
+            padding: 1rem;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+        }
+
+        .highlight-item strong {
+            color: var(--secondary);
+            display: block;
+            margin-bottom: 0.5rem;
+        }
+
+        .project-stats {
+            display: flex;
+            gap: 1rem;
+            margin: 1.5rem 0;
+            flex-wrap: wrap;
+        }
+
+        .stat-box {
+            background: linear-gradient(135deg, var(--secondary), var(--accent));
+            color: white;
+            padding: 1rem 1.5rem;
+            border-radius: 10px;
+            text-align: center;
+            min-width: 150px;
+        }
+
+        .stat-value {
+            font-size: 1.8rem;
+            font-weight: 700;
+            display: block;
+        }
+
+        .stat-label {
+            font-size: 0.9rem;
+            opacity: 0.9;
+        }
+
+        .cta-buttons-modal {
+            display: flex;
+            gap: 1rem;
+            margin-top: 2rem;
+            flex-wrap: wrap;
+        }
+        
+        .view-details-btn {
+            background: linear-gradient(135deg, var(--secondary), var(--accent));
+            color: white;
+            padding: 12px 24px;
+            border-radius: 8px;
+            border: none;
+            font-weight: 600;
+            font-size: 0.95rem;
+            cursor: pointer;
+            transition: all 0.3s;
+            width: 100%;
+            margin-top: auto;
+        }
+        
+        .view-details-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(6, 182, 212, 0.4);
         }
         
         /* Experience Section */
@@ -846,7 +1002,6 @@
         </div>
     </section>
 
-    <!-- Rest of your HTML remains exactly the same -->
     <section id="introduction" class="introduction">
         <div class="container">
             <h2>About Me</h2>
@@ -908,105 +1063,290 @@
         </div>
     </section>
 
-  <!-- Find the Projects Section in your HTML (around line 250-300) -->
-<!-- Replace the ENTIRE <section id="projects" class="projects"> section with this code: -->
+    <!-- UPDATED PROJECTS SECTION - Cleaner with Modal Popups -->
+    <section id="projects" class="projects">
+        <div class="container">
+            <h2>Featured Projects</h2>
+            <div class="projects-grid">
+                <!-- Project 1: Walmart Sales Analysis -->
+                <div class="project-card">
+                    <div class="project-header">
+                        <h3>Walmart Store Sales Performance Analysis</h3>
+                    </div>
+                    <div class="project-body">
+                        <p><strong>Business Challenge:</strong> Identify drivers of store performance and quantify holiday sales impact.</p>
+                        <ul style="color: var(--text); margin: 1rem 0; padding-left: 1.2rem; font-size: 0.95rem;">
+                            <li>Analyzed 65K+ rows of sales data</li>
+                            <li>Holidays drove 52% of total sales</li>
+                            <li>Strong correlation (0.75) between sales and store efficiency</li>
+                        </ul>
+                        <div class="tech-tags">
+                            <span class="tech-tag">Advanced Excel</span>
+                            <span class="tech-tag">Statistical Analysis</span>
+                            <span class="tech-tag">Pivot Tables</span>
+                        </div>
+                        <button class="view-details-btn" onclick="openModal('walmartModal')">
+                            <i class="fas fa-chart-bar" style="margin-right: 8px;"></i> View Detailed Analysis
+                        </button>
+                    </div>
+                </div>
 
-<section id="projects" class="projects">
-    <div class="container">
-        <h2>Featured Projects</h2>
-        <div class="projects-grid">
-            <!-- Project 1: Walmart Sales Analysis -->
-            <div class="project-card">
-                <div class="project-header">
-                    <h3>Walmart Store Sales Performance Analysis</h3>
-                </div>
-                <div class="project-body">
-                    <p><strong>Business Problem:</strong> Identify why certain stores outperform others and assess how holiday seasons influence weekly sales patterns.</p>
-                    <p><strong>Analysis:</strong> Analyzed 65K+ rows of Walmart sales data to uncover key drivers of store performance and quantify holiday effects.</p>
-                    <p><strong>Key Insights:</strong></p>
-                    <ul style="color: var(--text); margin-bottom: 1rem; padding-left: 1.2rem;">
-                        <li>Holiday periods drove <strong>52% of total sales</strong> with strong spikes in Dec 2022 & 2023</li>
-                        <li>Strong positive correlation (0.75) between Sales & Sales per Sq. Ft, indicating store efficiency drives revenue</li>
-                        <li>External factors showed minimal effect on sales (unemployment, temperature, fuel price correlations below ±0.05)</li>
-                    </ul>
-                    <p><strong>Tools & Approach:</strong> Advanced Excel, Pivot Tables, XLOOKUP, statistical analysis, hypothesis testing</p>
-                    <p><strong>Recommendations:</strong> Strengthen holiday promotions in low-performing stores, improve seasonal inventory planning, focus on weaker store types and departments.</p>
-                    <div class="tech-tags">
-                        <span class="tech-tag">Advanced Excel</span>
-                        <span class="tech-tag">Pivot Tables</span>
-                        <span class="tech-tag">XLOOKUP</span>
-                        <span class="tech-tag">Statistical Analysis</span>
-                        <span class="tech-tag">Data Cleaning</span>
+                <!-- Project 2: Cliqz Search Engine Analysis -->
+                <div class="project-card">
+                    <div class="project-header">
+                        <h3>Cliqz Search Engine Analysis</h3>
                     </div>
-                    <div style="margin-top: 1.5rem;">
-                        <a href="https://tinyurl.com/husnainzahoor-walmart" target="_blank" 
-                           style="background: linear-gradient(135deg, var(--secondary), var(--accent)); 
-                                  color: white; padding: 8px 16px; border-radius: 6px; 
-                                  text-decoration: none; font-weight: 600; font-size: 0.9rem;
-                                  display: inline-block; transition: all 0.3s;">
-                            <i class="fas fa-external-link-alt" style="margin-right: 5px;"></i> View Full Analysis
-                        </a>
+                    <div class="project-body">
+                        <p><strong>Objective:</strong> User behavior analysis and query forecasting for server optimization.</p>
+                        <ul style="color: var(--text); margin: 1rem 0; padding-left: 1.2rem; font-size: 0.95rem;">
+                            <li>Analyzed 70K+ search queries</li>
+                            <li>Forecasted ~2.7K hourly queries</li>
+                            <li>Designed interactive Tableau dashboards</li>
+                        </ul>
+                        <div class="tech-tags">
+                            <span class="tech-tag">Tableau</span>
+                            <span class="tech-tag">Time-Series</span>
+                            <span class="tech-tag">Data Viz</span>
+                        </div>
+                        <button class="view-details-btn" onclick="openModal('cliqzModal')">
+                            <i class="fas fa-search" style="margin-right: 8px;"></i> View Case Study
+                        </button>
                     </div>
                 </div>
-            </div>
 
-            <!-- Project 2: Cliqz Search Engine Analysis -->
-            <div class="project-card">
-                <div class="project-header">
-                    <h3>Cliqz Search Engine – User Behavior & Forecasting Analysis</h3>
-                </div>
-                <div class="project-body">
-                    <p><strong>Objective:</strong> Analyze user search behavior patterns and forecast query volume for optimal server capacity planning.</p>
-                    <p><strong>Analysis:</strong> Analyzed 70K+ search query records across countries, hours, and query types to uncover user-behavior patterns.</p>
-                    <p><strong>Key Achievements:</strong></p>
-                    <ul style="color: var(--text); margin-bottom: 1rem; padding-left: 1.2rem;">
-                        <li>Built time-series forecasting model predicting <strong>~2.7K hourly queries</strong></li>
-                        <li>Recommended <strong>~3K queries/hour server capacity</strong> for stable performance</li>
-                        <li>Designed interactive Tableau dashboards highlighting search volume trends and country comparisons</li>
-                        <li>Delivered data story linking insights to technical decisions (server scaling & optimization)</li>
-                    </ul>
-                    <p><strong>Tools & Approach:</strong> Tableau, Advanced Excel (data cleaning, XLOOKUP, timestamp conversions), time-series forecasting</p>
-                    <div class="tech-tags">
-                        <span class="tech-tag">Tableau</span>
-                        <span class="tech-tag">Data Visualization</span>
-                        <span class="tech-tag">Time-Series Forecasting</span>
-                        <span class="tech-tag">Advanced Excel</span>
-                        <span class="tech-tag">Data Cleaning</span>
+                <!-- Project 3: Financial Analysis -->
+                <div class="project-card">
+                    <div class="project-header">
+                        <h3>Financial Data Analysis</h3>
                     </div>
-                    <div style="margin-top: 1.5rem;">
-                        <a href="https://public.tableau.com/app/profile/husnain.zahoor/viz/CliqzProject/Story" target="_blank" 
-                           style="background: linear-gradient(135deg, var(--secondary), var(--accent)); 
-                                  color: white; padding: 8px 16px; border-radius: 6px; 
-                                  text-decoration: none; font-weight: 600; font-size: 0.9rem;
-                                  display: inline-block; transition: all 0.3s;">
-                            <i class="fas fa-external-link-alt" style="margin-right: 5px;"></i> View Tableau Dashboard
-                        </a>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Project 3: Placeholder for your third project -->
-            <div class="project-card">
-                <div class="project-header">
-                    <h3>Financial Data Analysis & Risk Assessment</h3>
-                </div>
-                <div class="project-body">
-                    <p><strong>Currently in progress:</strong> Comprehensive analysis of financial datasets with risk assessment and investment insights.</p>
-                    <p><strong>Skills Demonstrated:</strong> Financial modeling, risk analysis, statistical methods, and data visualization to support investment decisions.</p>
-                    <p><strong>Expected Tools:</strong> Excel, Power BI, Python (Pandas, NumPy), statistical analysis libraries.</p>
-                    <p><em>This project is currently being expanded with more detailed financial analysis and visualization components.</em></p>
-                    <div class="tech-tags">
-                        <span class="tech-tag">Financial Analysis</span>
-                        <span class="tech-tag">Risk Assessment</span>
-                        <span class="tech-tag">Power BI</span>
-                        <span class="tech-tag">Statistical Modeling</span>
-                        <span class="tech-tag">Data Visualization</span>
+                    <div class="project-body">
+                        <p><strong>Focus:</strong> Risk assessment and investment insights through data modeling.</p>
+                        <ul style="color: var(--text); margin: 1rem 0; padding-left: 1.2rem; font-size: 0.95rem;">
+                            <li>Comprehensive financial datasets</li>
+                            <li>Risk analysis & statistical methods</li>
+                            <li>Interactive Power BI dashboards</li>
+                        </ul>
+                        <div class="tech-tags">
+                            <span class="tech-tag">Power BI</span>
+                            <span class="tech-tag">Risk Analysis</span>
+                            <span class="tech-tag">Financial Modeling</span>
+                        </div>
+                        <button class="view-details-btn" onclick="openModal('financeModal')">
+                            <i class="fas fa-chart-line" style="margin-right: 8px;"></i> View Analysis
+                        </button>
                     </div>
                 </div>
             </div>
         </div>
+    </section>
+
+    <!-- Walmart Project Modal -->
+    <div id="walmartModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Walmart Store Sales Performance Analysis</h3>
+                <p style="opacity: 0.9; font-size: 1.1rem;">Comprehensive sales analysis uncovering key drivers of store performance</p>
+                <button class="close-modal" onclick="closeModal('walmartModal')">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="project-stats">
+                    <div class="stat-box">
+                        <span class="stat-value">65K+</span>
+                        <span class="stat-label">Rows Analyzed</span>
+                    </div>
+                    <div class="stat-box">
+                        <span class="stat-value">52%</span>
+                        <span class="stat-label">Sales from Holidays</span>
+                    </div>
+                    <div class="stat-box">
+                        <span class="stat-value">0.75</span>
+                        <span class="stat-label">Efficiency Correlation</span>
+                    </div>
+                </div>
+                
+                <h4>Business Problem</h4>
+                <p>Identify why certain stores outperform others and assess how holiday seasons influence weekly sales patterns to provide actionable recommendations for optimization.</p>
+                
+                <h4>Approach & Methodology</h4>
+                <p>Applied Advanced Excel techniques including Pivot Tables, XLOOKUP functions, and statistical analysis to process 65,000+ rows of sales data. Conducted hypothesis testing to validate findings and quantify holiday effects.</p>
+                
+                <div class="project-highlights">
+                    <div class="highlight-item">
+                        <strong>Key Finding 1: Holiday Impact</strong>
+                        <p>Holiday periods drove 52% of total sales with strong spikes in December 2022 & 2023, indicating critical seasonal opportunities.</p>
+                    </div>
+                    <div class="highlight-item">
+                        <strong>Key Finding 2: Store Efficiency</strong>
+                        <p>Strong positive correlation (0.75) between Sales and Sales per Sq. Ft reveals store efficiency as a primary revenue driver.</p>
+                    </div>
+                    <div class="highlight-item">
+                        <strong>Key Finding 3: External Factors</strong>
+                        <p>Minimal correlation found with external factors (unemployment: -0.0469, temperature: -0.028, fuel: 0.007), confirming internal factors are more impactful.</p>
+                    </div>
+                </div>
+                
+                <h4>Tools & Technologies</h4>
+                <div class="tech-tags" style="margin: 1rem 0 2rem 0;">
+                    <span class="tech-tag">Advanced Excel</span>
+                    <span class="tech-tag">Pivot Tables</span>
+                    <span class="tech-tag">XLOOKUP</span>
+                    <span class="tech-tag">Statistical Analysis</span>
+                    <span class="tech-tag">Data Cleaning</span>
+                    <span class="tech-tag">Correlation Analysis</span>
+                </div>
+                
+                <h4>Recommendations & Business Impact</h4>
+                <ul style="color: var(--text); margin-bottom: 2rem; padding-left: 1.2rem;">
+                    <li><strong>Strengthen holiday promotions</strong> in low-performing stores to match top performers</li>
+                    <li><strong>Improve seasonal inventory planning</strong> based on December sales patterns</li>
+                    <li><strong>Focus optimization efforts</strong> on weaker store types and departments</li>
+                    <li><strong>Implement store efficiency metrics</strong> as key performance indicators</li>
+                </ul>
+                
+                <div class="cta-buttons-modal">
+                    <a href="https://tinyurl.com/husnainzahoor-walmart" target="_blank" 
+                       style="background: linear-gradient(135deg, var(--secondary), var(--accent)); 
+                              color: white; padding: 12px 24px; border-radius: 8px; 
+                              text-decoration: none; font-weight: 600; font-size: 0.95rem;
+                              display: inline-flex; align-items: center; gap: 8px;">
+                        <i class="fas fa-external-link-alt"></i> View Full Analysis
+                    </a>
+                    <button onclick="closeModal('walmartModal')" 
+                            style="background: transparent; color: var(--secondary); 
+                                   padding: 12px 24px; border-radius: 8px; 
+                                   border: 2px solid var(--secondary); font-weight: 600; 
+                                   font-size: 0.95rem; cursor: pointer;">
+                        Close Preview
+                    </button>
+                </div>
+            </div>
+        </div>
     </div>
-</section>
+
+    <!-- Cliqz Project Modal -->
+    <div id="cliqzModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Cliqz Search Engine – User Behavior & Forecasting Analysis</h3>
+                <p style="opacity: 0.9; font-size: 1.1rem;">Case study analyzing 70K+ search queries for operational optimization</p>
+                <button class="close-modal" onclick="closeModal('cliqzModal')">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="project-stats">
+                    <div class="stat-box">
+                        <span class="stat-value">70K+</span>
+                        <span class="stat-label">Search Queries</span>
+                    </div>
+                    <div class="stat-box">
+                        <span class="stat-value">2.7K</span>
+                        <span class="stat-label">Hourly Forecast</span>
+                    </div>
+                    <div class="stat-box">
+                        <span class="stat-value">3K/hr</span>
+                        <span class="stat-label">Recommended Capacity</span>
+                    </div>
+                </div>
+                
+                <h4>Project Objective</h4>
+                <p>Analyze user search behavior patterns and forecast query volume to optimize server capacity planning and improve search engine performance.</p>
+                
+                <h4>Methodology</h4>
+                <p>Utilized Advanced Excel for data cleaning and preparation, followed by comprehensive Tableau visualization and time-series forecasting to predict search patterns and recommend server capacity.</p>
+                
+                <div class="project-highlights">
+                    <div class="highlight-item">
+                        <strong>User Behavior Analysis</strong>
+                        <p>Uncovered patterns across countries, hours, and query types from 70,000+ search records, identifying peak usage times and regional preferences.</p>
+                    </div>
+                    <div class="highlight-item">
+                        <strong>Forecasting Model</strong>
+                        <p>Built time-series model predicting ~2,700 hourly queries, enabling data-driven capacity planning and resource allocation.</p>
+                    </div>
+                    <div class="highlight-item">
+                        <strong>Dashboard Design</strong>
+                        <p>Created interactive Tableau dashboards highlighting search volume trends, country comparisons, and query-length insights for operational planning.</p>
+                    </div>
+                </div>
+                
+                <h4>Tools & Technologies</h4>
+                <div class="tech-tags" style="margin: 1rem 0 2rem 0;">
+                    <span class="tech-tag">Tableau</span>
+                    <span class="tech-tag">Advanced Excel</span>
+                    <span class="tech-tag">Time-Series Forecasting</span>
+                    <span class="tech-tag">Data Visualization</span>
+                    <span class="tech-tag">XLOOKUP</span>
+                    <span class="tech-tag">Data Cleaning</span>
+                </div>
+                
+                <h4>Business Impact & Recommendations</h4>
+                <ul style="color: var(--text); margin-bottom: 2rem; padding-left: 1.2rem;">
+                    <li><strong>Server capacity recommendation:</strong> ~3,000 queries/hour for stable performance</li>
+                    <li><strong>Peak hour identification</strong> for resource optimization and load balancing</li>
+                    <li><strong>Country-specific insights</strong> for localized search optimization</li>
+                    <li><strong>Query length analysis</strong> informing search algorithm improvements</li>
+                </ul>
+                
+                <div class="cta-buttons-modal">
+                    <a href="https://public.tableau.com/app/profile/husnain.zahoor/viz/CliqzProject/Story" target="_blank" 
+                       style="background: linear-gradient(135deg, var(--secondary), var(--accent)); 
+                              color: white; padding: 12px 24px; border-radius: 8px; 
+                              text-decoration: none; font-weight: 600; font-size: 0.95rem;
+                              display: inline-flex; align-items: center; gap: 8px;">
+                        <i class="fas fa-external-link-alt"></i> View Tableau Dashboard
+                    </a>
+                    <button onclick="closeModal('cliqzModal')" 
+                            style="background: transparent; color: var(--secondary); 
+                                   padding: 12px 24px; border-radius: 8px; 
+                                   border: 2px solid var(--secondary); font-weight: 600; 
+                                   font-size: 0.95rem; cursor: pointer;">
+                        Close Preview
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Financial Analysis Modal -->
+    <div id="financeModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Financial Data Analysis & Risk Assessment</h3>
+                <p style="opacity: 0.9; font-size: 1.1rem;">Comprehensive financial modeling and risk analysis</p>
+                <button class="close-modal" onclick="closeModal('financeModal')">&times;</button>
+            </div>
+            <div class="modal-body">
+                <p><strong>Project Overview:</strong> Comprehensive analysis of financial datasets with risk assessment and investment insights using statistical methods and data visualization.</p>
+                
+                <h4>Key Focus Areas</h4>
+                <ul style="color: var(--text); margin-bottom: 2rem; padding-left: 1.2rem;">
+                    <li>Financial risk assessment and portfolio analysis</li>
+                    <li>Investment performance tracking and forecasting</li>
+                    <li>Market trend analysis and pattern recognition</li>
+                    <li>Interactive dashboard development for financial reporting</li>
+                </ul>
+                
+                <h4>Tools & Technologies</h4>
+                <div class="tech-tags" style="margin: 1rem 0 2rem 0;">
+                    <span class="tech-tag">Power BI</span>
+                    <span class="tech-tag">Advanced Excel</span>
+                    <span class="tech-tag">Statistical Analysis</span>
+                    <span class="tech-tag">Financial Modeling</span>
+                    <span class="tech-tag">Risk Assessment</span>
+                    <span class="tech-tag">Data Visualization</span>
+                </div>
+                
+                <p><em>This project demonstrates advanced financial analysis capabilities including risk modeling, investment insight generation, and interactive dashboard creation for financial decision support.</em></p>
+                
+                <button onclick="closeModal('financeModal')" 
+                        style="background: linear-gradient(135deg, var(--secondary), var(--accent)); 
+                               color: white; padding: 12px 24px; border-radius: 8px; 
+                               border: none; font-weight: 600; font-size: 0.95rem;
+                               cursor: pointer; margin-top: 1rem; width: 100%;">
+                    Close Preview
+                </button>
+            </div>
+        </div>
+    </div>
 
     <section id="experience" class="experience">
         <div class="container">
@@ -1206,6 +1546,35 @@
                 canvas.height = window.innerHeight;
             });
         }
+        
+        // Modal Functions - NEW ADDITION
+        function openModal(modalId) {
+            document.getElementById(modalId).style.display = 'block';
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeModal(modalId) {
+            document.getElementById(modalId).style.display = 'none';
+            document.body.style.overflow = 'auto';
+        }
+
+        // Close modal when clicking outside content
+        window.onclick = function(event) {
+            if (event.target.classList.contains('modal')) {
+                event.target.style.display = 'none';
+                document.body.style.overflow = 'auto';
+            }
+        }
+
+        // Close with Escape key
+        document.addEventListener('keydown', function(event) {
+            if (event.key === 'Escape') {
+                document.querySelectorAll('.modal').forEach(modal => {
+                    modal.style.display = 'none';
+                });
+                document.body.style.overflow = 'auto';
+            }
+        });
         
         // Initialize particles when page loads
         window.addEventListener('load', initParticles);
