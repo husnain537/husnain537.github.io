@@ -1,0 +1,562 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Walmart Sales Analysis - Husnain Zahoor</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Inter', 'Segoe UI', system-ui, sans-serif;
+            line-height: 1.6;
+            color: #1e293b;
+            background: #ffffff;
+        }
+        
+        :root {
+            --primary: #0f172a;
+            --secondary: #0ea5e9;
+            --accent: #06b6d4;
+            --text: #334155;
+            --light-bg: #f8fafc;
+        }
+        
+        /* Professional Project Header */
+        .project-header {
+            background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+            color: white;
+            padding: 120px 3rem 60px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .project-header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" preserveAspectRatio="none"><path d="M0,0 L100,0 L100,100 Z" fill="rgba(6, 182, 212, 0.1)"/></svg>');
+            background-size: cover;
+            opacity: 0.3;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .back-button {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            color: var(--accent);
+            text-decoration: none;
+            font-weight: 600;
+            margin-bottom: 2rem;
+            transition: all 0.3s;
+        }
+        
+        .back-button:hover {
+            gap: 12px;
+        }
+        
+        .project-title {
+            font-size: 3.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            line-height: 1.2;
+        }
+        
+        .project-subtitle {
+            font-size: 1.3rem;
+            opacity: 0.9;
+            margin-bottom: 2rem;
+            max-width: 800px;
+        }
+        
+        .project-meta {
+            display: flex;
+            gap: 2rem;
+            flex-wrap: wrap;
+            margin-top: 3rem;
+        }
+        
+        .meta-item {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 12px 24px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        
+        .meta-item i {
+            color: var(--accent);
+            font-size: 1.2rem;
+        }
+        
+        .meta-label {
+            font-size: 0.9rem;
+            opacity: 0.8;
+        }
+        
+        .meta-value {
+            font-weight: 600;
+            font-size: 1.1rem;
+        }
+        
+        /* Project Content */
+        .project-content {
+            padding: 80px 3rem;
+            background: #ffffff;
+        }
+        
+        .content-grid {
+            display: grid;
+            grid-template-columns: 1fr 350px;
+            gap: 4rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .main-content {
+            max-width: 800px;
+        }
+        
+        .sidebar {
+            position: sticky;
+            top: 100px;
+            height: fit-content;
+        }
+        
+        h2 {
+            color: var(--primary);
+            font-size: 2.2rem;
+            margin: 3rem 0 1.5rem;
+            font-weight: 700;
+            position: relative;
+            padding-bottom: 10px;
+        }
+        
+        h2::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 60px;
+            height: 4px;
+            background: linear-gradient(90deg, var(--secondary), var(--accent));
+            border-radius: 2px;
+        }
+        
+        h3 {
+            color: var(--primary);
+            font-size: 1.5rem;
+            margin: 2rem 0 1rem;
+            font-weight: 600;
+        }
+        
+        p {
+            color: var(--text);
+            line-height: 1.8;
+            margin-bottom: 1.5rem;
+            font-size: 1.1rem;
+        }
+        
+        ul, ol {
+            color: var(--text);
+            line-height: 1.8;
+            margin-bottom: 1.5rem;
+            padding-left: 1.5rem;
+        }
+        
+        li {
+            margin-bottom: 0.8rem;
+            font-size: 1.1rem;
+        }
+        
+        strong {
+            color: var(--primary);
+        }
+        
+        /* Info Cards */
+        .info-card {
+            background: var(--light-bg);
+            border-radius: 12px;
+            padding: 2rem;
+            margin: 2rem 0;
+            border-left: 4px solid var(--secondary);
+        }
+        
+        .info-card h4 {
+            color: var(--secondary);
+            font-size: 1.2rem;
+            margin-bottom: 1rem;
+            font-weight: 600;
+        }
+        
+        /* Stats Grid */
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+        
+        .stat-card {
+            background: linear-gradient(135deg, var(--secondary), var(--accent));
+            color: white;
+            padding: 1.5rem;
+            border-radius: 12px;
+            text-align: center;
+        }
+        
+        .stat-value {
+            font-size: 2.5rem;
+            font-weight: 700;
+            display: block;
+            line-height: 1;
+        }
+        
+        .stat-label {
+            font-size: 0.95rem;
+            opacity: 0.9;
+            margin-top: 0.5rem;
+        }
+        
+        /* Tech Tags */
+        .tech-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.8rem;
+            margin: 1.5rem 0;
+        }
+        
+        .tech-tag {
+            background: #e0f2fe;
+            color: #0369a1;
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: 600;
+        }
+        
+        /* Sidebar */
+        .sidebar-card {
+            background: white;
+            border-radius: 12px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+            border: 1px solid #e2e8f0;
+        }
+        
+        .sidebar-card h3 {
+            color: var(--primary);
+            font-size: 1.3rem;
+            margin-bottom: 1.5rem;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #e2e8f0;
+        }
+        
+        .download-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background: linear-gradient(135deg, var(--secondary), var(--accent));
+            color: white;
+            padding: 14px 28px;
+            border-radius: 10px;
+            text-decoration: none;
+            font-weight: 600;
+            width: 100%;
+            justify-content: center;
+            transition: all 0.3s;
+            margin-top: 1rem;
+        }
+        
+        .download-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(6, 182, 212, 0.3);
+        }
+        
+        /* Footer */
+        footer {
+            background: #0f172a;
+            color: #94a3b8;
+            text-align: center;
+            padding: 3rem 2rem;
+            margin-top: 4rem;
+        }
+        
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin: 1.5rem 0;
+            flex-wrap: wrap;
+        }
+        
+        .footer-link {
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+            padding: 12px 24px;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 10px;
+            color: #cbd5e1;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.95rem;
+            transition: all 0.3s;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .footer-link:hover {
+            background: rgba(255, 255, 255, 0.1);
+            color: white;
+        }
+        
+        .copyright {
+            margin-top: 2rem;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        /* Responsive */
+        @media (max-width: 1024px) {
+            .content-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .sidebar {
+                position: static;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .project-header {
+                padding: 100px 1.5rem 40px;
+            }
+            
+            .project-title {
+                font-size: 2.5rem;
+            }
+            
+            .project-content {
+                padding: 60px 1.5rem;
+            }
+            
+            .project-meta {
+                flex-direction: column;
+                gap: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Project Header -->
+    <header class="project-header">
+        <div class="container">
+            <a href="index.html" class="back-button">
+                <i class="fas fa-arrow-left"></i> Back to Portfolio
+            </a>
+            <h1 class="project-title">Walmart Store Sales Performance Analysis</h1>
+            <p class="project-subtitle">Comprehensive analysis of 65K+ sales records to identify performance drivers and quantify holiday impact on store revenue.</p>
+            
+            <div class="project-meta">
+                <div class="meta-item">
+                    <i class="fas fa-calendar-alt"></i>
+                    <div>
+                        <div class="meta-label">Project Date</div>
+                        <div class="meta-value">November 2024</div>
+                    </div>
+                </div>
+                <div class="meta-item">
+                    <i class="fas fa-tags"></i>
+                    <div>
+                        <div class="meta-label">Category</div>
+                        <div class="meta-value">Retail Analytics</div>
+                    </div>
+                </div>
+                <div class="meta-item">
+                    <i class="fas fa-chart-line"></i>
+                    <div>
+                        <div class="meta-label">Tools Used</div>
+                        <div class="meta-value">Advanced Excel, Statistics</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Project Content -->
+    <main class="project-content">
+        <div class="content-grid">
+            <!-- Main Content -->
+            <div class="main-content">
+                <h2>Project Overview</h2>
+                <p>This comprehensive analysis was conducted to understand Walmart store performance variations and identify key factors influencing sales. The project involved analyzing over 65,000 rows of sales data across multiple stores, departments, and time periods to provide actionable insights for business optimization.</p>
+                
+                <div class="info-card">
+                    <h4>Business Problem</h4>
+                    <p>Walmart management needed to understand why certain stores consistently outperformed others and quantify the impact of holiday seasons on weekly sales patterns. The goal was to provide data-driven recommendations for improving underperforming stores and optimizing holiday season strategies.</p>
+                </div>
+                
+                <h2>Key Insights & Findings</h2>
+                
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <span class="stat-value">52%</span>
+                        <span class="stat-label">Sales from Holiday Periods</span>
+                    </div>
+                    <div class="stat-card">
+                        <span class="stat-value">0.75</span>
+                        <span class="stat-label">Efficiency Correlation</span>
+                    </div>
+                    <div class="stat-card">
+                        <span class="stat-value">65K+</span>
+                        <span class="stat-label">Rows Analyzed</span>
+                    </div>
+                    <div class="stat-card">
+                        <span class="stat-value">Dec '22-'23</span>
+                        <span class="stat-label">Peak Sales Period</span>
+                    </div>
+                </div>
+                
+                <h3>Holiday Sales Impact Analysis</h3>
+                <p>Holiday periods were found to drive <strong>52% of total annual sales</strong>, with particularly strong spikes observed in December 2022 and 2023. This indicates that holiday seasons represent critical opportunities for revenue generation that should be strategically planned for.</p>
+                
+                <h3>Store Efficiency Correlation</h3>
+                <p>A strong positive correlation of <strong>0.75</strong> was identified between Sales and Sales per Square Foot. This reveals that store efficiency is a primary driver of revenue, suggesting that optimizing store layout and operations could significantly impact overall performance.</p>
+                
+                <h3>External Factor Analysis</h3>
+                <p>External economic factors showed minimal impact on sales:
+                    <ul>
+                        <li>Unemployment correlation: <strong>-0.0469</strong> (negligible negative effect)</li>
+                        <li>Temperature correlation: <strong>-0.028</strong> (minimal effect)</li>
+                        <li>Fuel price correlation: <strong>0.007</strong> (virtually no effect)</li>
+                    </ul>
+                These findings confirm that internal store factors are more impactful than external economic conditions for Walmart's sales performance.</p>
+                
+                <h2>Methodology & Approach</h2>
+                <p>The analysis was conducted using Advanced Excel techniques including:</p>
+                <ul>
+                    <li><strong>Pivot Tables:</strong> For multi-dimensional data aggregation and trend analysis</li>
+                    <li><strong>XLOOKUP Functions:</strong> For efficient data matching and consolidation</li>
+                    <li><strong>Statistical Analysis:</strong> Correlation studies and hypothesis testing</li>
+                    <li><strong>Data Cleaning:</strong> Processing and validation of 65,000+ data points</li>
+                    <li><strong>Visualization:</strong> Creation of charts and graphs for pattern identification</li>
+                </ul>
+                
+                <h2>Tools & Technologies</h2>
+                <div class="tech-tags">
+                    <span class="tech-tag">Advanced Excel</span>
+                    <span class="tech-tag">Pivot Tables</span>
+                    <span class="tech-tag">XLOOKUP</span>
+                    <span class="tech-tag">Statistical Analysis</span>
+                    <span class="tech-tag">Data Cleaning</span>
+                    <span class="tech-tag">Correlation Analysis</span>
+                    <span class="tech-tag">Data Visualization</span>
+                    <span class="tech-tag">Hypothesis Testing</span>
+                </div>
+                
+                <h2>Business Recommendations</h2>
+                <div class="info-card">
+                    <h4>Strategic Actions Based on Findings</h4>
+                    <ol>
+                        <li><strong>Holiday Strategy Enhancement:</strong> Strengthen holiday promotions and inventory planning in low-performing stores to match top performers' success rates</li>
+                        <li><strong>Efficiency Optimization:</strong> Implement store efficiency metrics as key performance indicators and focus on layout improvements</li>
+                        <li><strong>Seasonal Planning:</strong> Develop targeted December sales strategies based on identified peak patterns</li>
+                        <li><strong>Department Focus:</strong> Allocate resources to weaker departments identified in the analysis</li>
+                        <li><strong>Performance Monitoring:</strong> Establish regular performance tracking based on the identified key metrics</li>
+                    </ol>
+                </div>
+                
+                <h2>Impact & Value Delivered</h2>
+                <p>This analysis provided Walmart management with:</p>
+                <ul>
+                    <li>Clear identification of high-performing store characteristics</li>
+                    <li>Quantified holiday season impact on revenue</li>
+                    <li>Data-driven strategies for improving underperforming locations</li>
+                    <li>Framework for ongoing performance monitoring</li>
+                    <li>Actionable insights for seasonal planning and resource allocation</li>
+                </ul>
+            </div>
+            
+            <!-- Sidebar -->
+            <div class="sidebar">
+                <div class="sidebar-card">
+                    <h3>Project Details</h3>
+                    <p><strong>Client:</strong> Walmart Stores Analysis</p>
+                    <p><strong>Duration:</strong> 3 Weeks</p>
+                    <p><strong>Data Size:</strong> 65,000+ Records</p>
+                    <p><strong>Analysis Type:</strong> Retail Performance</p>
+                    <p><strong>Key Metrics:</strong> Sales, Efficiency, Holiday Impact</p>
+                    
+                    <a href="https://tinyurl.com/husnainzahoor-walmart" target="_blank" class="download-btn">
+                        <i class="fas fa-external-link-alt"></i> View Full Analysis
+                    </a>
+                </div>
+                
+                <div class="sidebar-card">
+                    <h3>Skills Demonstrated</h3>
+                    <ul>
+                        <li>Advanced Excel Analytics</li>
+                        <li>Statistical Correlation Analysis</li>
+                        <li>Business Intelligence Reporting</li>
+                        <li>Data Cleaning & Processing</li>
+                        <li>Strategic Recommendation Development</li>
+                        <li>Performance Metric Identification</li>
+                    </ul>
+                </div>
+                
+                <div class="sidebar-card">
+                    <h3>Related Projects</h3>
+                    <p><a href="cliqz-project.html" style="color: var(--secondary); text-decoration: none; font-weight: 600;">Cliqz Search Engine Analysis →</a></p>
+                    <p><a href="financial-project.html" style="color: var(--secondary); text-decoration: none; font-weight: 600;">Financial Data Analysis →</a></p>
+                    <p><a href="index.html" style="color: var(--secondary); text-decoration: none; font-weight: 600;">Back to Portfolio →</a></p>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-links">
+                <a href="https://github.com/husnain537" class="footer-link" target="_blank">
+                    <i class="fab fa-github"></i>
+                    GitHub
+                </a>
+                <a href="https://www.linkedin.com/in/husnainzahoor/" class="footer-link" target="_blank">
+                    <i class="fab fa-linkedin-in"></i>
+                    LinkedIn
+                </a>
+                <a href="index.html" class="footer-link">
+                    <i class="fas fa-home"></i>
+                    Portfolio Home
+                </a>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2025 Husnain Zahoor | Data Analyst Portfolio | Walmart Sales Analysis Case Study</p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
