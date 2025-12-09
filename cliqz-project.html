@@ -27,9 +27,9 @@
             --light-bg: #f8fafc;
         }
         
-        /* Professional Project Header */
+        /* Professional Project Header - Matching Homepage */
         .project-header {
-            background: linear-gradient(135deg, #1a237e 0%, #283593 100%);
+            background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
             color: white;
             padding: 120px 3rem 60px;
             position: relative;
@@ -43,9 +43,9 @@
             left: 0;
             right: 0;
             bottom: 0;
-            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" preserveAspectRatio="none"><path d="M0,0 L100,0 L100,100 Z" fill="rgba(255, 255, 255, 0.1)"/></svg>');
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" preserveAspectRatio="none"><path d="M0,0 L100,0 L100,100 Z" fill="rgba(6, 182, 212, 0.1)"/></svg>');
             background-size: cover;
-            opacity: 0.2;
+            opacity: 0.3;
         }
         
         .container {
@@ -59,7 +59,7 @@
             display: inline-flex;
             align-items: center;
             gap: 8px;
-            color: #bbdefb;
+            color: var(--accent);
             text-decoration: none;
             font-weight: 600;
             margin-bottom: 2rem;
@@ -68,7 +68,6 @@
         
         .back-button:hover {
             gap: 12px;
-            color: white;
         }
         
         .project-title {
@@ -103,7 +102,7 @@
         }
         
         .meta-item i {
-            color: #bbdefb;
+            color: var(--accent);
             font-size: 1.2rem;
         }
         
@@ -157,7 +156,7 @@
             left: 0;
             width: 60px;
             height: 4px;
-            background: linear-gradient(90deg, #283593, #5c6bc0);
+            background: linear-gradient(90deg, var(--secondary), var(--accent));
             border-radius: 2px;
         }
         
@@ -188,26 +187,27 @@
         }
         
         strong {
-            color: #283593;
+            color: var(--primary);
         }
         
-        /* Info Cards */
+        /* Info Cards - Matching Homepage */
         .info-card {
-            background: #f3f5f9;
+            background: #f8fafc;
             border-radius: 12px;
             padding: 2rem;
             margin: 2rem 0;
-            border-left: 4px solid #283593;
+            border-left: 4px solid var(--secondary);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
         }
         
         .info-card h4 {
-            color: #283593;
+            color: var(--secondary);
             font-size: 1.2rem;
             margin-bottom: 1rem;
             font-weight: 600;
         }
         
-        /* Stats Grid */
+        /* Stats Grid - Matching Homepage */
         .stats-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
@@ -216,11 +216,12 @@
         }
         
         .stat-card {
-            background: linear-gradient(135deg, #283593, #5c6bc0);
+            background: linear-gradient(135deg, var(--secondary), var(--accent));
             color: white;
             padding: 1.5rem;
             border-radius: 12px;
             text-align: center;
+            box-shadow: 0 10px 20px rgba(6, 182, 212, 0.2);
         }
         
         .stat-value {
@@ -236,7 +237,7 @@
             margin-top: 0.5rem;
         }
         
-        /* Tech Tags */
+        /* Tech Tags - Matching Homepage */
         .tech-tags {
             display: flex;
             flex-wrap: wrap;
@@ -245,15 +246,15 @@
         }
         
         .tech-tag {
-            background: #e8eaf6;
-            color: #283593;
+            background: #e0f2fe;
+            color: #0369a1;
             padding: 8px 16px;
             border-radius: 20px;
             font-size: 0.9rem;
             font-weight: 600;
         }
         
-        /* Sidebar */
+        /* Sidebar - Matching Homepage */
         .sidebar-card {
             background: white;
             border-radius: 12px;
@@ -271,11 +272,11 @@
             border-bottom: 2px solid #e2e8f0;
         }
         
-        .dashboard-btn {
+        .project-btn {
             display: inline-flex;
             align-items: center;
             gap: 10px;
-            background: linear-gradient(135deg, #283593, #5c6bc0);
+            background: linear-gradient(135deg, var(--secondary), var(--accent));
             color: white;
             padding: 14px 28px;
             border-radius: 10px;
@@ -285,11 +286,13 @@
             justify-content: center;
             transition: all 0.3s;
             margin-top: 1rem;
+            border: none;
+            cursor: pointer;
         }
         
-        .dashboard-btn:hover {
+        .project-btn:hover {
             transform: translateY(-3px);
-            box-shadow: 0 10px 30px rgba(40, 53, 147, 0.3);
+            box-shadow: 0 10px 30px rgba(6, 182, 212, 0.3);
         }
         
         /* Dashboard Preview */
@@ -304,14 +307,14 @@
         
         .dashboard-icon {
             font-size: 3rem;
-            color: #283593;
+            color: var(--secondary);
             margin-bottom: 1rem;
         }
         
-        /* Footer */
+        /* Footer - Matching Homepage */
         footer {
-            background: #1a237e;
-            color: #bbdefb;
+            background: #020617;
+            color: #94a3b8;
             text-align: center;
             padding: 3rem 2rem;
             margin-top: 4rem;
@@ -335,9 +338,9 @@
             align-items: center;
             gap: 0.8rem;
             padding: 12px 24px;
-            background: rgba(255, 255, 255, 0.1);
+            background: rgba(255, 255, 255, 0.05);
             border-radius: 10px;
-            color: #bbdefb;
+            color: #cbd5e1;
             text-decoration: none;
             font-weight: 600;
             font-size: 0.95rem;
@@ -346,7 +349,7 @@
         }
         
         .footer-link:hover {
-            background: rgba(255, 255, 255, 0.2);
+            background: rgba(255, 255, 255, 0.1);
             color: white;
         }
         
@@ -398,13 +401,6 @@
             <p class="project-subtitle">User behavior analysis and forecasting for server optimization using 70K+ search queries and Tableau dashboards.</p>
             
             <div class="project-meta">
-                <div class="meta-item">
-                    <i class="fas fa-calendar-alt"></i>
-                    <div>
-                        <div class="meta-label">Project Date</div>
-                        <div class="meta-value">January 2025</div>
-                    </div>
-                </div>
                 <div class="meta-item">
                     <i class="fas fa-tags"></i>
                     <div>
@@ -493,7 +489,7 @@
                     </div>
                     <h3>Interactive Dashboard</h3>
                     <p>The Tableau dashboard provides real-time insights into search patterns, user behavior, and forecasted loads.</p>
-                    <a href="https://public.tableau.com/app/profile/husnain.zahoor/viz/CliqzProject/Story" target="_blank" class="dashboard-btn">
+                    <a href="https://public.tableau.com/app/profile/husnain.zahoor/viz/CliqzProject/Story" target="_blank" class="project-btn">
                         <i class="fas fa-external-link-alt"></i> View Live Dashboard
                     </a>
                 </div>
@@ -549,12 +545,11 @@
                 <div class="sidebar-card">
                     <h3>Project Details</h3>
                     <p><strong>Platform:</strong> Cliqz Search Engine</p>
-                    <p><strong>Duration:</strong> 4 Weeks</p>
                     <p><strong>Data Size:</strong> 70,000+ Queries</p>
                     <p><strong>Analysis Type:</strong> User Behavior & Forecasting</p>
                     <p><strong>Key Deliverables:</strong> Dashboards, Forecasts, Recommendations</p>
                     
-                    <a href="https://public.tableau.com/app/profile/husnain.zahoor/viz/CliqzProject/Story" target="_blank" class="dashboard-btn">
+                    <a href="https://public.tableau.com/app/profile/husnain.zahoor/viz/CliqzProject/Story" target="_blank" class="project-btn">
                         <i class="fas fa-external-link-alt"></i> View Tableau Dashboard
                     </a>
                 </div>
@@ -573,9 +568,9 @@
                 
                 <div class="sidebar-card">
                     <h3>Related Projects</h3>
-                    <p><a href="walmart-project.html" style="color: #283593; text-decoration: none; font-weight: 600;">Walmart Sales Analysis →</a></p>
-                    <p><a href="financial-project.html" style="color: #283593; text-decoration: none; font-weight: 600;">Financial Data Analysis →</a></p>
-                    <p><a href="index.html" style="color: #283593; text-decoration: none; font-weight: 600;">Back to Portfolio →</a></p>
+                    <p><a href="walmart-project.html" style="color: var(--secondary); text-decoration: none; font-weight: 600;">Walmart Sales Analysis →</a></p>
+                    <p><a href="financial-project.html" style="color: var(--secondary); text-decoration: none; font-weight: 600;">Financial Data Analysis →</a></p>
+                    <p><a href="index.html" style="color: var(--secondary); text-decoration: none; font-weight: 600;">Back to Portfolio →</a></p>
                 </div>
             </div>
         </div>
