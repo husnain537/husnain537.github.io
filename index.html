@@ -284,12 +284,37 @@
     justify-content: center;
 }
 
+.profile-photo-container {
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    overflow: hidden;
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.08);
+    background: #ffffff; /* PURE WHITE BACKGROUND */
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.profile-photo-container {
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    overflow: hidden;
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.08);
+    background: #ffffff; /* PURE WHITE BACKGROUND */
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
 .profile-photo-container::before {
     content: '';
     position: absolute;
-    inset: -3px;
+    inset: -2px;
     border-radius: 50%;
-    padding: 3px;
+    padding: 2px;
     background: linear-gradient(135deg, #06b6d4, #0ea5e9);
     -webkit-mask: 
         linear-gradient(#fff 0 0) content-box, 
@@ -301,8 +326,8 @@
 }
 
 .profile-photo {
-    width: 95%;
-    height: 95%;
+    width: 96%;
+    height: 96%;
     object-fit: cover;
     object-position: center center;
     display: block;
