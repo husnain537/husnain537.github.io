@@ -92,6 +92,34 @@
             width: 100%;
         }
         
+        /* Resume Button in Navigation - ADDED */
+        .nav-resume-btn {
+            background: linear-gradient(135deg, #06b6d4, #0ea5e9);
+            color: white !important;
+            padding: 10px 22px !important;
+            border-radius: 8px;
+            margin-left: 1rem;
+            border: none;
+            transition: all 0.3s;
+            font-weight: 600;
+            font-size: 0.95rem;
+        }
+        
+        .nav-resume-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(6, 182, 212, 0.4);
+            color: white !important;
+        }
+        
+        .nav-resume-btn::after {
+            display: none !important;
+        }
+        
+        .nav-resume-btn i {
+            margin-right: 8px;
+            font-size: 0.9rem;
+        }
+        
         /* Hero Section with Animated Data Particles */
         .hero {
             background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
@@ -787,6 +815,31 @@
             font-size: 1.05rem;
         }
         
+        /* Contact Resume Button - ADDED */
+        .contact-resume-btn {
+            display: inline-block;
+            background: linear-gradient(135deg, var(--secondary), var(--accent));
+            color: white;
+            padding: 12px 24px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.95rem;
+            margin-top: 0.5rem;
+            transition: all 0.3s;
+            border: none;
+            cursor: pointer;
+        }
+        
+        .contact-resume-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(6, 182, 212, 0.4);
+        }
+        
+        .contact-resume-btn i {
+            margin-right: 8px;
+        }
+        
         /* Contact Form */
         .contact-form {
             background: rgba(255, 255, 255, 0.05);
@@ -975,6 +1028,12 @@
             .projects-grid {
                 grid-template-columns: 1fr;
             }
+            
+            /* Mobile adjustments for resume button */
+            .nav-resume-btn {
+                margin-left: 0;
+                margin-top: 0.5rem;
+            }
         }
     </style>
 </head>
@@ -989,6 +1048,12 @@
                 <li><a href="#projects">Projects</a></li>
                 <li><a href="#experience">Experience</a></li>
                 <li><a href="#contact">Contact</a></li>
+                <!-- RESUME DOWNLOAD BUTTON IN NAVIGATION - ADDED -->
+                <li>
+                    <a href="Husnain_Zahoor_Resume.pdf" download="Husnain_Zahoor_Resume.pdf" class="nav-resume-btn">
+                        <i class="fas fa-download"></i> Resume
+                    </a>
+                </li>
             </ul>
         </div>
     </nav>
@@ -1260,6 +1325,19 @@
                             <h3>Current Location</h3>
                             <p class="contact-location">Riyadh, Saudi Arabia</p>
                             <p style="color: #94a3b8; font-size: 0.9rem; margin-top: 0.5rem;">Open to opportunities in KSA & remote</p>
+                        </div>
+                    </div>
+                    <!-- RESUME DOWNLOAD IN CONTACT SECTION - ADDED -->
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-file-alt"></i>
+                        </div>
+                        <div class="contact-details">
+                            <h3>Professional Resume</h3>
+                            <a href="Husnain_Zahoor_Resume.pdf" download="Husnain_Zahoor_Resume.pdf" class="contact-resume-btn">
+                                <i class="fas fa-download"></i> Download Full Resume
+                            </a>
+                            <p style="color: #94a3b8; font-size: 0.9rem; margin-top: 0.5rem;">PDF Format - Updated 2025</p>
                         </div>
                     </div>
                 </div>
