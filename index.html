@@ -3,187 +3,1423 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Husnain Zahoor | Data Analyst Portfolio</title>
-
-    <!-- Google Font -->
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
-
+    <title>Husnain Zahoor - Data Analyst</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
-        body {
+        * {
             margin: 0;
-            font-family: 'Inter', sans-serif;
-            background-color: #f7f9fc;
-            color: #333;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Inter', 'Segoe UI', system-ui, sans-serif;
             line-height: 1.6;
+            color: #1e293b;
+            scroll-behavior: smooth;
+            background: #f8fafc;
         }
-
-        header {
-            background: #0f172a;
+        
+        :root {
+            --primary: #0f172a;
+            --secondary: #0ea5e9;
+            --accent: #06b6d4;
+            --success: #10b981;
+            --text: #334155;
+            --light-bg: #f8fafc;
+            --card-bg: #ffffff;
+        }
+        
+        /* Navigation - More Professional */
+        nav {
+            background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+            padding: 1.2rem 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+        }
+        
+        .nav-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 3rem;
+        }
+        
+        .logo {
             color: white;
-            padding: 60px 20px;
+            font-size: 1.5rem;
+            font-weight: 700;
+            letter-spacing: -0.5px;
+        }
+        
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2.5rem;
+            align-items: center;
+        }
+        
+        .nav-links a {
+            color: rgba(255, 255, 255, 0.9);
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 0.95rem;
+            transition: all 0.3s;
+            position: relative;
+        }
+        
+        .nav-links a:hover {
+            color: var(--accent);
+        }
+        
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -5px;
+            left: 0;
+            background: var(--accent);
+            transition: width 0.3s;
+        }
+        
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+        
+        /* Hero Section with Animated Data Particles */
+        .hero {
+            background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 8rem 2rem 4rem;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        /* Data Particles Canvas */
+        #particles-canvas {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 0;
+        }
+        
+        .hero-content {
+            max-width: 900px;
             text-align: center;
+            color: white;
+            position: relative;
+            z-index: 2;
         }
-
-        header h1 {
-            margin-bottom: 10px;
-            font-size: 36px;
+        
+        .hero-content h1 {
+            font-size: 3.8rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            line-height: 1.2;
+            letter-spacing: -1px;
         }
-
-        header p {
-            font-size: 18px;
-            max-width: 700px;
-            margin: auto;
+        
+        .highlight {
+            color: var(--accent);
+            background: linear-gradient(135deg, #06b6d4, #0ea5e9);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
         }
-
+        
+        .hero-content .subtitle {
+            font-size: 1.4rem;
+            margin-bottom: 2.5rem;
+            opacity: 0.9;
+            font-weight: 400;
+            color: #cbd5e1;
+        }
+        
+        .cta-buttons {
+            display: flex;
+            gap: 1.2rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        
+        .cta-btn {
+            padding: 14px 32px;
+            border: none;
+            border-radius: 8px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            text-decoration: none;
+            display: inline-block;
+        }
+        
+        .cta-btn-primary {
+            background: linear-gradient(135deg, #06b6d4, #0ea5e9);
+            color: white;
+        }
+        
+        .cta-btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(6, 182, 212, 0.4);
+        }
+        
+        .cta-btn-secondary {
+            background: rgba(255, 255, 255, 0.1);
+            color: white;
+            border: 2px solid rgba(255, 255, 255, 0.2);
+        }
+        
+        .cta-btn-secondary:hover {
+            background: rgba(255, 255, 255, 0.15);
+            border-color: var(--accent);
+        }
+        
+        /* Sections with Data Pattern Background */
         section {
-            padding: 60px 20px;
-            max-width: 1000px;
-            margin: auto;
+            padding: 100px 3rem;
+            position: relative;
         }
-
+        
+        section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: 
+                linear-gradient(90deg, rgba(6, 182, 212, 0.03) 1px, transparent 1px),
+                linear-gradient(rgba(6, 182, 212, 0.03) 1px, transparent 1px);
+            background-size: 50px 50px;
+            pointer-events: none;
+            opacity: 0.5;
+        }
+        
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+        }
+        
         h2 {
-            font-size: 28px;
-            margin-bottom: 20px;
-            color: #0f172a;
+            text-align: center;
+            margin-bottom: 3.5rem;
+            font-size: 2.8rem;
+            color: var(--primary);
+            font-weight: 700;
+            position: relative;
+            letter-spacing: -0.5px;
         }
-
-        .about p {
-            max-width: 800px;
+        
+        h2::after {
+            content: '';
+            position: absolute;
+            bottom: -12px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background: linear-gradient(90deg, var(--secondary), var(--accent));
+            border-radius: 2px;
         }
-
-        .skills {
+        
+        /* Introduction Section */
+        .introduction {
+            background: linear-gradient(135deg, #f8fafc 0%, #e0f2fe 100%);
+        }
+        
+        .intro-content {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 20px;
+            grid-template-columns: 320px 1fr;
+            gap: 4rem;
+            align-items: start;
+            max-width: 1100px;
+            margin: 0 auto;
         }
-
-        .skill-box {
-            background: white;
-            padding: 20px;
-            border-radius: 10px;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.05);
-        }
-
-        .projects {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 25px;
-        }
-
-        .project-card {
-            background: white;
-            padding: 25px;
-            border-radius: 12px;
-            box-shadow: 0 6px 15px rgba(0,0,0,0.08);
+        
+        .profile-image {
             display: flex;
             flex-direction: column;
-            justify-content: space-between;
+            align-items: center;
+            gap: 1.5rem;
+            position: sticky;
+            top: 120px;
         }
-
-        .project-card h3 {
-            margin-top: 0;
+        
+        /* CIRCULAR PHOTO - Professional Style */
+        .profile-photo-container {
+            width: 300px;
+            height: 300px;
+            border-radius: 50%;
+            overflow: hidden;
+            box-shadow: 0 20px 60px rgba(6, 182, 212, 0.3);
+            background: white;
+            position: relative;
         }
-
-        .project-card a {
-            margin-top: 15px;
-            text-decoration: none;
+        
+        /* CIRCULAR PHOTO - Professional Style */
+ .profile-photo-container {
+            width: 300px;
+            height: 300px;
+            border-radius: 50%;
+            overflow: hidden;
+            box-shadow: 0 20px 60px rgba(6, 182, 212, 0.3);
+            background: #ffffff;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .profile-photo-container::before {
+            content: '';
+            position: absolute;
+            inset: -3px;
+            border-radius: 50%;
+            padding: 3px;
+            background: linear-gradient(135deg, #06b6d4, #0ea5e9);
+            -webkit-mask: 
+                linear-gradient(#fff 0 0) content-box, 
+                linear-gradient(#fff 0 0);
+            -webkit-mask-composite: xor;
+            mask-composite: exclude;
+            pointer-events: none;
+            z-index: 1;
+        }
+        
+        .profile-photo {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center center;
+            display: block;
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 1rem;
+        }
+        
+        .social-link {
+            width: 48px;
+            height: 48px;
+            background: var(--primary);
             color: white;
-            background: #2563eb;
-            padding: 10px 15px;
-            border-radius: 6px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            transition: all 0.3s;
+            font-size: 1.3rem;
+        }
+        
+        .social-link:hover {
+            background: var(--secondary);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(14, 165, 233, 0.3);
+        }
+        
+        .intro-text-content {
+            padding-top: 1rem;
+        }
+        
+        .intro-text {
+            font-size: 1.15rem;
+            line-height: 1.8;
+            color: var(--text);
+            margin-bottom: 1.5rem;
+        }
+        
+        /* Skills Section */
+        .skills {
+            background: white;
+        }
+        
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+        
+        .skill-card {
+            background: white;
+            padding: 2.5rem;
+            border-radius: 16px;
+            border: 1px solid #e2e8f0;
+            transition: all 0.3s;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .skill-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 4px;
+            height: 100%;
+            background: linear-gradient(180deg, var(--secondary), var(--accent));
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+        
+        .skill-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            border-color: var(--secondary);
+        }
+        
+        .skill-card:hover::before {
+            opacity: 1;
+        }
+        
+        .skill-icon {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, #e0f2fe, #f0f9ff);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1.5rem;
+            color: var(--secondary);
+            font-size: 1.8rem;
+        }
+        
+        .skill-card h3 {
+            color: var(--primary);
+            margin-bottom: 1rem;
+            font-size: 1.4rem;
+            font-weight: 700;
+        }
+        
+        .skill-card p {
+            color: var(--text);
+            line-height: 1.7;
+            font-size: 1rem;
+        }
+        
+        /* Projects Section - UPDATED & PROFESSIONAL */
+        .projects {
+            background: linear-gradient(135deg, #f8fafc 0%, #e0f2fe 100%);
+        }
+        
+        .projects-intro {
             text-align: center;
+            max-width: 800px;
+            margin: 0 auto 4rem;
+            color: var(--text);
+            font-size: 1.2rem;
+            line-height: 1.8;
+        }
+        
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
+            gap: 3rem;
+            margin-top: 2rem;
+        }
+        
+        @media (max-width: 768px) {
+            .projects-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        .project-card {
+            background: white;
+            border-radius: 20px;
+            overflow: hidden;
+            border: 1px solid #e2e8f0;
+            transition: all 0.4s;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+        }
+        
+        .project-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 30px 60px rgba(6, 182, 212, 0.15);
+            border-color: var(--secondary);
+        }
+        
+        .project-header {
+            background: linear-gradient(135deg, #0ea5e9, #06b6d4);
+            padding: 2.5rem;
+            color: white;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .project-header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" preserveAspectRatio="none"><path d="M0,0 L100,0 L100,100 Z" fill="rgba(255, 255, 255, 0.1)"/></svg>');
+            background-size: cover;
+        }
+        
+        .project-card h3 {
+            font-size: 1.6rem;
+            font-weight: 700;
+            margin-bottom: 0.8rem;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .project-type {
+            font-size: 0.9rem;
+            opacity: 0.9;
+            font-weight: 600;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .project-body {
+            padding: 2.5rem;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .project-body p {
+            color: var(--text);
+            line-height: 1.7;
+            margin-bottom: 1.2rem;
+            font-size: 1.05rem;
+        }
+        
+        /* Project Impact Metrics */
+        .project-impact {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1rem;
+            margin: 1.5rem 0;
+        }
+        
+        .impact-metric {
+            background: #f8fafc;
+            padding: 1rem;
+            border-radius: 10px;
+            text-align: center;
+            border-left: 3px solid var(--secondary);
+        }
+        
+        .metric-value {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: var(--primary);
+            display: block;
+        }
+        
+        .metric-label {
+            font-size: 0.85rem;
+            color: #64748b;
+            margin-top: 0.3rem;
+        }
+        
+        .project-highlights {
+            margin: 1.5rem 0;
+            padding-left: 1.2rem;
+        }
+        
+        .project-highlights li {
+            color: var(--text);
+            margin-bottom: 0.8rem;
+            font-size: 0.95rem;
+            position: relative;
+        }
+        
+        .project-highlights li:before {
+            content: "✓";
+            color: var(--success);
+            font-weight: bold;
+            margin-right: 10px;
+        }
+        
+        .tech-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.7rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        .tech-tag {
+            background: #e0f2fe;
+            color: #0369a1;
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            transition: all 0.3s;
+        }
+        
+        .tech-tag:hover {
+            background: #bae6fd;
+            transform: translateY(-2px);
+        }
+        
+        .project-link {
+            background: linear-gradient(135deg, var(--secondary), var(--accent));
+            color: white;
+            padding: 14px 28px;
+            border-radius: 10px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: all 0.3s;
+            width: 100%;
+            text-align: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            margin-top: auto;
+            border: none;
+        }
+        
+        .project-link:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 35px rgba(6, 182, 212, 0.3);
+        }
+        
+        .project-link i {
+            transition: transform 0.3s;
+        }
+        
+        .project-link:hover i {
+            transform: translateX(5px);
+        }
+        
+        /* Experience Section */
+        .experience {
+            background: white;
+        }
+        
+        .experience-grid {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+        
+        .experience-card {
+            background: white;
+            padding: 2.5rem;
+            border-radius: 16px;
+            border: 1px solid #e2e8f0;
+            position: relative;
+            padding-left: 3rem;
+        }
+        
+        .experience-card::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            width: 4px;
+            background: linear-gradient(180deg, var(--secondary), var(--accent));
+            border-radius: 2px;
+        }
+        
+        .experience-card h3 {
+            color: var(--primary);
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+            font-weight: 700;
+        }
+        
+        .company {
+            color: var(--secondary);
+            font-weight: 600;
+            font-size: 1.1rem;
+            margin-bottom: 0.3rem;
+        }
+        
+        .duration {
+            color: #64748b;
+            font-size: 0.95rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        .experience-card ul {
+            color: var(--text);
+            line-height: 1.8;
+            padding-left: 1.5rem;
+        }
+        
+        .experience-card li {
+            margin-bottom: 0.8rem;
+        }
+        
+        /* Education Section */
+        .education {
+            background: linear-gradient(135deg, #f8fafc 0%, #e0f2fe 100%);
+            padding: 80px 3rem;
+        }
+        
+        .education-card {
+            max-width: 700px;
+            margin: 0 auto;
+            background: white;
+            padding: 2rem;
+            border-radius: 16px;
+            border: 1px solid #e2e8f0;
+            text-align: center;
+        }
+        
+        .education-card h3 {
+            color: var(--primary);
+            font-size: 1.3rem;
+            margin-bottom: 0.8rem;
+            font-weight: 700;
+        }
+        
+        .education-meta {
+            color: var(--secondary);
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+        
+        .education-details {
+            color: var(--text);
+            line-height: 1.7;
+        }
+        
+        /* Contact Section */
+        .contact {
+            background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+            color: white;
+        }
+        
+        .contact h2 {
+            color: white;
+        }
+        
+        .contact-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+        
+        .contact-info {
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+        }
+        
+        .contact-item {
+            display: flex;
+            align-items: start;
+            gap: 1.2rem;
+            padding: 1.5rem;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 12px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: all 0.3s;
+        }
+        
+        .contact-item:hover {
+            background: rgba(255, 255, 255, 0.08);
+            transform: translateX(5px);
+        }
+        
+        .contact-icon {
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, var(--secondary), var(--accent));
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            font-size: 1.3rem;
+        }
+        
+        .contact-details h3 {
+            color: var(--accent);
+            margin-bottom: 0.5rem;
+            font-size: 1.1rem;
             font-weight: 600;
         }
-
-        .project-card a:hover {
-            background: #1e40af;
+        
+        .contact-details p {
+            color: #cbd5e1;
+            line-height: 1.6;
         }
-
-        footer {
-            background: #0f172a;
+        
+        .contact-email {
+            color: var(--accent) !important;
+            font-weight: 600;
+            font-size: 1.05rem;
+        }
+        
+        .contact-phone {
+            color: var(--accent) !important;
+            font-weight: 600;
+            font-size: 1.05rem;
+        }
+        
+        .contact-location {
+            color: var(--accent) !important;
+            font-weight: 600;
+            font-size: 1.05rem;
+        }
+        
+        /* Contact Form */
+        .contact-form {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 2.5rem;
+            border-radius: 16px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+        
+        .form-group label {
+            display: block;
             color: white;
-            text-align: center;
-            padding: 30px 20px;
+            margin-bottom: 0.6rem;
+            font-weight: 600;
+            font-size: 0.95rem;
         }
-
-        footer a {
-            color: #93c5fd;
+        
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 14px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 8px;
+            background: rgba(255, 255, 255, 0.05);
+            color: white;
+            font-size: 1rem;
+            transition: all 0.3s;
+        }
+        
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--accent);
+            background: rgba(255, 255, 255, 0.08);
+        }
+        
+        .form-group input::placeholder,
+        .form-group textarea::placeholder {
+            color: rgba(255, 255, 255, 0.5);
+        }
+        
+        .submit-btn {
+            width: 100%;
+            padding: 14px;
+            background: linear-gradient(135deg, var(--secondary), var(--accent));
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 1.05rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        
+        .submit-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(6, 182, 212, 0.4);
+        }
+        
+        /* Footer - Updated with Professional Links */
+        footer {
+            background: #020617;
+            color: #94a3b8;
+            text-align: center;
+            padding: 3rem 2rem;
+            font-size: 0.9rem;
+        }
+        
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin: 1.5rem 0;
+            flex-wrap: wrap;
+        }
+        
+        .footer-link {
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+            padding: 12px 24px;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 10px;
+            color: #cbd5e1;
             text-decoration: none;
-            margin: 0 10px;
+            font-weight: 600;
+            font-size: 0.95rem;
+            transition: all 0.3s;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .footer-link:hover {
+            background: rgba(255, 255, 255, 0.1);
+            transform: translateY(-2px);
+            color: white;
+        }
+        
+        .footer-link.github:hover {
+            background: #333;
+            border-color: #333;
+        }
+        
+        .footer-link.linkedin:hover {
+            background: #0077B5;
+            border-color: #0077B5;
+        }
+        
+        .footer-link i {
+            font-size: 1.2rem;
+        }
+        
+        .copyright {
+            margin-top: 2rem;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: #64748b;
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .nav-container {
+                flex-direction: column;
+                gap: 1rem;
+                padding: 1rem 2rem;
+            }
+            
+            .nav-links {
+                gap: 1.5rem;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+            
+            .hero-content h1 {
+                font-size: 2.5rem;
+            }
+            
+            section {
+                padding: 80px 1.5rem;
+            }
+            
+            .intro-content {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+            
+            .profile-image {
+                position: static;
+            }
+            
+            .intro-text {
+                text-align: center;
+            }
+            
+            .contact-content {
+                grid-template-columns: 1fr;
+            }
+            
+            .contact-item {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .footer-links {
+                flex-direction: column;
+                align-items: center;
+                gap: 1rem;
+            }
+            
+            .footer-link {
+                width: 200px;
+                justify-content: center;
+            }
+            
+            .project-impact {
+                grid-template-columns: 1fr;
+            }
+            
+            .projects-grid {
+                grid-template-columns: 1fr;
+            }
         }
     </style>
 </head>
-
 <body>
-
-<header>
-    <h1>Hacnain Zahoor</h1>
-    <p>Data Analyst skilled in SQL, PostgreSQL, Python, and Data Analysis — focused on transforming raw data into meaningful insights.</p>
-</header>
-
-<section class="about">
-    <h2>About Me</h2>
-    <p>
-        I am a Data Analyst with a strong foundation in SQL, PostgreSQL, and Python. I enjoy working on real-world datasets,
-        cleaning data, performing analysis, and presenting insights that support business decisions.
-        Currently, I am building hands-on projects to strengthen my analytical and problem-solving skills.
-    </p>
-</section>
-
-<section>
-    <h2>Skills</h2>
-    <div class="skills">
-        <div class="skill-box">
-            <strong>Databases</strong>
-            <p>PostgreSQL, MySQL</p>
+    <nav>
+        <div class="nav-container">
+            <div class="logo">Husnain Zahoor</div>
+            <ul class="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#introduction">About</a></li>
+                <li><a href="#skills">Skills</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#experience">Experience</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
         </div>
-        <div class="skill-box">
-            <strong>Programming</strong>
-            <p>SQL, Python</p>
-        </div>
-        <div class="skill-box">
-            <strong>Data Analysis</strong>
-            <p>Data Cleaning, Joins, Aggregations, Business Queries</p>
-        </div>
-        <div class="skill-box">
-            <strong>Tools</strong>
-            <p>Excel, Git, VS Code</p>
-        </div>
-    </div>
-</section>
+    </nav>
 
-<section>
-    <h2>Projects</h2>
+    <section id="home" class="hero">
+        <!-- Animated Data Particles Canvas -->
+        <canvas id="particles-canvas"></canvas>
+        
+        <div class="hero-content">
+            <h1>Transforming Data into <span class="highlight">Actionable Insights</span></h1>
+            <p class="subtitle">Data Analyst | SQL Expert | Visualization Specialist</p>
+            <div class="cta-buttons">
+                <button class="cta-btn cta-btn-primary" onclick="scrollToSection('projects')">View My Work</button>
+                <button class="cta-btn cta-btn-secondary" onclick="scrollToSection('contact')">Get in Touch</button>
+            </div>
+        </div>
+    </section>
 
-    <div class="projects">
+    <section id="introduction" class="introduction">
+        <div class="container">
+            <h2>About Me</h2>
+            <div class="intro-content">
+                <div class="profile-image">
+                    <div class="profile-photo-container">
+                        <img src="husnain.img.jpg" alt="Husnain Zahoor" class="profile-photo">
+                    </div>
+                    <div class="social-links">
+                        <a href="https://www.linkedin.com/in/husnainzahoor/" class="social-link" target="_blank">
+                            <i class="fab fa-linkedin-in"></i>
+                        </a>
+                        <a href="https://github.com/husnain537" class="social-link" target="_blank">
+                            <i class="fab fa-github"></i>
+                        </a>
+                    </div>
+                </div>
+                <div class="intro-text-content">
+                    <p class="intro-text">
+                        A passionate Data Analyst with a strong foundation in analytical thinking and problem-solving. I specialize in transforming raw data into meaningful insights that drive business decisions and create tangible value.
+                    </p>
+                    <p class="intro-text">
+                        With expertise in Advanced Excel, PostgresSQL, Data visualization, and statistical analysis, I bridge the gap between technical data processing and business strategy. My professional experience in project planning and performance tracking has strengthened my ability to deliver data-driven solutions in real-world scenarios.
+                    </p>
+                    <p class="intro-text">
+                        Currently based in Riyadh, KSA, I am eager to leverage my analytical skills to help organizations unlock the full potential of their data and support informed, strategic decision-making.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
 
-        <div class="project-card">
-            <h3>Walmart Sales Data Analysis</h3>
-            <p>
-                An end-to-end SQL project focused on analyzing Walmart sales data to answer business-driven questions,
-                perform data cleaning, and extract actionable insights.
+    <section id="skills" class="skills">
+        <div class="container">
+            <h2>Core Expertise</h2>
+            <div class="skills-grid">
+                <div class="skill-card">
+                    <div class="skill-icon">
+                        <i class="fas fa-database"></i>
+                    </div>
+                    <h3>PostgresSQL</h3>
+                    <p>Advanced SQL querying, data cleaning, transformation, and complex business intelligence reporting to extract actionable insights from large datasets.</p>
+                </div>
+                <div class="skill-card">
+                    <div class="skill-icon">
+                        <i class="fas fa-file-excel"></i>
+                    </div>
+                    <h3>Advanced Excel</h3>
+                    <p>Expert in Pivot Tables, XLOOKUP and complex data analysis. Creating automated reports and dashboards for efficient data processing.</p>
+                </div>
+                <div class="skill-card">
+                    <div class="skill-icon">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <h3>Data Visualization</h3>
+                    <p>Creating compelling visual stories with Tableau. Designing interactive dashboards that communicate complex data insights effectively.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- UPDATED PROJECTS SECTION - SUPER PROFESSIONAL FOR RECRUITERS -->
+    <section id="projects" class="projects">
+        <div class="container">
+            <h2>Featured Projects</h2>
+            <p class="projects-intro">
+                Each project demonstrates my ability to solve real business problems using data analytics. Click on any project to explore detailed case studies including methodology, findings, and business impact.
             </p>
-            <a href="walmart_project.html" target="_blank">View Project</a>
+            
+            <div class="projects-grid">
+                <!-- Project 1: Walmart Sales Analysis - ENHANCED -->
+                <div class="project-card">
+                    <div class="project-header">
+                        <div class="project-type">Retail Analytics</div>
+                        <h3>Walmart Store Sales Performance Analysis</h3>
+                    </div>
+                    <div class="project-body">
+                        <p><strong>Business Challenge:</strong> Identify key drivers of store performance variance and quantify holiday season impact on weekly sales patterns across 65,000+ transactions.</p>
+                        
+                        <div class="project-impact">
+                            <div class="impact-metric">
+                                <span class="metric-value">52%</span>
+                                <span class="metric-label">Sales from Holidays</span>
+                            </div>
+                            <div class="impact-metric">
+                                <span class="metric-value">0.75</span>
+                                <span class="metric-label">Efficiency Correlation</span>
+                            </div>
+                            <div class="impact-metric">
+                                <span class="metric-value">65K+</span>
+                                <span class="metric-label">Rows Analyzed</span>
+                            </div>
+                            <div class="impact-metric">
+                                <span class="metric-value">5</span>
+                                <span class="metric-label">Key Recommendations</span>
+                            </div>
+                        </div>
+                        
+                        <ul class="project-highlights">
+                            <li>Uncovered that holiday periods drive majority of annual revenue</li>
+                            <li>Identified store efficiency as primary performance driver</li>
+                            <li>External economic factors showed minimal correlation with sales</li>
+                            <li>Delivered actionable strategies for underperforming stores</li>
+                        </ul>
+                        
+                        <div class="tech-tags">
+                            <span class="tech-tag">Advanced Excel</span>
+                            <span class="tech-tag">Pivot Tables</span>
+                            <span class="tech-tag">Statistical Analysis</span>
+                            <span class="tech-tag">XLOOKUP</span>
+                            <span class="tech-tag">Data Visualization</span>
+                            <span class="tech-tag">Correlation Analysis</span>
+                        </div>
+                        
+                        <a href="walmart-project.html" target="_blank" class="project-link">
+                            <i class="fas fa-chart-bar"></i> View Project Details
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Project 2: Cliqz Search Engine Analysis - ENHANCED -->
+                <div class="project-card">
+                    <div class="project-header">
+                        <div class="project-type">Search Engine Analytics & Forecasting</div>
+                        <h3>Case Study:Cliqz Search Engine Analysis</h3>
+                    </div>
+                    <div class="project-body">
+                        <p><strong>Business Objective:</strong> Analyze user search behavior patterns and forecast query volume to optimize server capacity planning and operational efficiency for search engine infrastructure.</p>
+                        
+                        <div class="project-impact">
+                            <div class="impact-metric">
+                                <span class="metric-value">70K+</span>
+                                <span class="metric-label">Search Queries</span>
+                            </div>
+                            <div class="impact-metric">
+                                <span class="metric-value">2.7K</span>
+                                <span class="metric-label">Hourly Forecast</span>
+                            </div>
+                            <div class="impact-metric">
+                                <span class="metric-value">3K/hr</span>
+                                <span class="metric-label">Capacity Recommended</span>
+                            </div>
+                            <div class="impact-metric">
+                                <span class="metric-value">15%</span>
+                                <span class="metric-label">Cost Reduction</span>
+                            </div>
+                        </div>
+                        
+                        <ul class="project-highlights">
+                            <li>Built time-series forecasting model predicting hourly search volumes</li>
+                            <li>Designed interactive Tableau dashboards for operational planning</li>
+                            <li>Identified peak usage patterns across countries and time zones</li>
+                            <li>Provided data-driven server capacity recommendations</li>
+                        </ul>
+                        
+                        <div class="tech-tags">
+                            <span class="tech-tag">Tableau</span>
+                            <span class="tech-tag">Time-Series Forecasting</span>
+                            <span class="tech-tag">Advanced Excel</span>
+                            <span class="tech-tag">Data Visualization</span>
+                            <span class="tech-tag">User Behavior Analysis</span>
+                            <span class="tech-tag">Dashboard Design</span>
+                        </div>
+                        
+                        <a href="cliqz-project.html" target="_blank" class="project-link">
+                            <i class="fas fa-search"></i> Case Study:Explore Analysis & Dashboards
+                        </a>
+                    </div>
+                </div>
+            </div>
+            
+            <div style="text-align: center; margin-top: 4rem;">
+                <p style="color: var(--text); font-size: 1.1rem; margin-bottom: 1.5rem;">
+                    <strong>Looking for more?</strong> These case studies demonstrate my full analytical workflow from problem definition to actionable recommendations.
+                </p>
+                <a href="#contact" class="cta-btn cta-btn-primary" onclick="scrollToSection('contact')" style="display: inline-flex; align-items: center; gap: 10px;">
+                    <i class="fas fa-paper-plane"></i> Request Full Portfolio
+                </a>
+            </div>
         </div>
+    </section>
 
-        <div class="project-card">
-            <h3>Search Engine Data Analysis</h3>
-            <p>
-                A data analytics project analyzing search engine data to understand user behavior, trends,
-                and performance using SQL queries and structured analysis.
-            </p>
-            <a href="search_engine_project.html" target="_blank">View Project</a>
+    <section id="experience" class="experience">
+        <div class="container">
+            <h2>Professional Experience</h2>
+            <div class="experience-grid">
+                <div class="experience-card">
+                    <h3>Jr. Planning Engineer</h3>
+                    <p class="company">Shandong Tiejun Electric Power Engineering Co, Ltd</p>
+                    <p class="duration">Feb 2025 - Present | Riyadh, KSA</p>
+                    <ul>
+                        <li>Collected, cleaned, and validated project data from multiple departments, improving progress tracking accuracy and enabling faster operational decision-making.</li>
+                        <li>Built S-curves, Pivot Tables, and performance dashboards in Advanced Excel, reducing report preparation time by 30–40% across daily, weekly, and monthly reporting cycles.</li>
+                        <li>Developed 1-week and 3-week look-ahead plans to support task prioritization, increasing on-time task completion by up to 20%.</li>
+                        <li>Monitored weekly progress targets (2–3% growth), identified variances 2–3 days earlier, and triggered timely corrective actions across departments.</li>
+                        <li>Delivered data-driven insights that helped teams recover from progress gaps and improved schedule alignment by 10–15%</li>
+                        <li>Analyzed planned vs. actual productivity to predict delays and support proactive decisions, including manpower adjustments and resource reallocation.</li>
+                        <li>Delivered data-driven insights that helped teams recover from progress gaps and improved schedule alignment by 10–15%</li>
+                        <li>Identified systematic gaps between planned and actual progress, contributing to improved workflow planning and reduced last-minute bottlenecks.</li>
+                        <li>Produced concise, stakeholder-ready reports highlighting completed work, upcoming risks, and optimization opportunities, improving execution accuracy and cross-team communication.</li>
+                        <li>Strengthened analytical, reporting, and visualization skills by applying practical data techniques directly aligned with Data Analyst responsibilities.</li>
+                    </ul>
+                </div>
+            </div>
         </div>
+    </section>
 
-    </div>
-</section>
+    <section id="education" class="education">
+        <div class="container">
+            <h2>Education</h2>
+            <div class="education-card">
+                <h3>Bachelor of Computer Engineering</h3>
+                <div class="education-meta">KFUEIT University of Engineering and Technology RYK • 2019-2023</div>
+                <div class="education-details">
+                    <p>Foundation in analytical thinking, problem-solving methodologies, and technical systems</p>
+                </div>
+            </div>
+        </div>
+    </section>
 
-<footer>
-    <p>Connect with me</p>
-    <a href="https://www.linkedin.com/" target="_blank">LinkedIn</a> |
-    <a href="https://github.com/" target="_blank">GitHub</a>
-    <p style="margin-top:10px;">© 2026 Husnain Zahoor</p>
-</footer>
+    <section id="contact" class="contact">
+        <div class="container">
+            <h2>Let's Connect</h2>
+            <div class="contact-content">
+                <div class="contact-info">
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-envelope"></i>
+                        </div>
+                        <div class="contact-details">
+                            <h3>Professional Email</h3>
+                            <p class="contact-email">husnainzahoor313@gmail.com</p>
+                            <p style="color: #94a3b8; font-size: 0.9rem; margin-top: 0.5rem;">Available for data analysis opportunities</p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-phone"></i>
+                        </div>
+                        <div class="contact-details">
+                            <h3>Direct Contact</h3>
+                            <p class="contact-phone">+966 58 050 1693</p>
+                            <p style="color: #94a3b8; font-size: 0.9rem; margin-top: 0.5rem;">Available for calls & WhatsApp</p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-map-marker-alt"></i>
+                        </div>
+                        <div class="contact-details">
+                            <h3>Current Location</h3>
+                            <p class="contact-location">Riyadh, Saudi Arabia</p>
+                            <p style="color: #94a3b8; font-size: 0.9rem; margin-top: 0.5rem;">Open to opportunities in KSA & remote</p>
+                        </div>
+                    </div>
+                </div>
 
+                <form class="contact-form" action="https://formspree.io/f/mwprnpeg" method="POST">
+                    <div class="form-group">
+                        <label for="name">Your Name</label>
+                        <input type="text" id="name" name="name" required placeholder="John Doe">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="email">Your Email</label>
+                        <input type="email" id="email" name="email" required placeholder="john@example.com">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="subject">Subject</label>
+                        <input type="text" id="subject" name="subject" placeholder="Job Opportunity">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="message">Message</label>
+                        <textarea id="message" name="message" rows="5" required placeholder="Tell me about your project or opportunity..."></textarea>
+                    </div>
+                    
+                    <button type="submit" class="submit-btn">Send Message</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-links">
+                <a href="https://github.com/husnain537" class="footer-link github" target="_blank">
+                    <i class="fab fa-github"></i>
+                    GitHub Portfolio
+                </a>
+                <a href="https://www.linkedin.com/in/husnainzahoor/" class="footer-link linkedin" target="_blank">
+                    <i class="fab fa-linkedin-in"></i>
+                    LinkedIn Profile
+                </a>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2025 Husnain Zahoor | Data Analyst Portfolio | All Rights Reserved</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Animated Data Particles
+        function initParticles() {
+            const canvas = document.getElementById('particles-canvas');
+            const ctx = canvas.getContext('2d');
+            
+            // Set canvas size
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+            
+            // Particle configuration
+            const particles = [];
+            const particleCount = 80;
+            const connectionDistance = 150;
+            
+            // Colors matching your theme
+            const colors = [
+                'rgba(6, 182, 212, 0.8)',   // Cyan
+                'rgba(14, 165, 233, 0.8)',  // Blue
+                'rgba(255, 255, 255, 0.6)', // White
+                'rgba(6, 182, 212, 0.6)',   // Lighter cyan
+            ];
+            
+            // Create particles
+            for (let i = 0; i < particleCount; i++) {
+                particles.push({
+                    x: Math.random() * canvas.width,
+                    y: Math.random() * canvas.height,
+                    size: Math.random() * 3 + 1,
+                    speedX: (Math.random() - 0.5) * 0.5,
+                    speedY: (Math.random() - 0.5) * 0.5,
+                    color: colors[Math.floor(Math.random() * colors.length)]
+                });
+            }
+            
+            // Animation loop
+            function animate() {
+                ctx.clearRect(0, 0, canvas.width, canvas.height);
+                
+                // Update and draw particles
+                particles.forEach(particle => {
+                    // Move particle
+                    particle.x += particle.speedX;
+                    particle.y += particle.speedY;
+                    
+                    // Bounce off edges
+                    if (particle.x <= 0 || particle.x >= canvas.width) particle.speedX *= -1;
+                    if (particle.y <= 0 || particle.y >= canvas.height) particle.speedY *= -1;
+                    
+                    // Draw particle
+                    ctx.beginPath();
+                    ctx.arc(particle.x, particle.y, particle.size, 0, Math.PI * 2);
+                    ctx.fillStyle = particle.color;
+                    ctx.fill();
+                    
+                    // Draw connections
+                    particles.forEach(otherParticle => {
+                        const dx = particle.x - otherParticle.x;
+                        const dy = particle.y - otherParticle.y;
+                        const distance = Math.sqrt(dx * dx + dy * dy);
+                        
+                        if (distance < connectionDistance) {
+                            ctx.beginPath();
+                            ctx.strokeStyle = `rgba(6, 182, 212, ${0.2 * (1 - distance/connectionDistance)})`;
+                            ctx.lineWidth = 0.5;
+                            ctx.moveTo(particle.x, particle.y);
+                            ctx.lineTo(otherParticle.x, otherParticle.y);
+                            ctx.stroke();
+                        }
+                    });
+                });
+                
+                requestAnimationFrame(animate);
+            }
+            
+            animate();
+            
+            // Handle window resize
+            window.addEventListener('resize', () => {
+                canvas.width = window.innerWidth;
+                canvas.height = window.innerHeight;
+            });
+        }
+        
+        // Initialize particles when page loads
+        window.addEventListener('load', initParticles);
+        
+        // Existing JavaScript functions
+        function scrollToSection(sectionId) {
+            const section = document.getElementById(sectionId);
+            if (section) {
+                section.scrollIntoView({ behavior: 'smooth' });
+            }
+        }
+        
+        document.querySelectorAll('nav a').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href').substring(1);
+                scrollToSection(targetId);
+            });
+        });
+        
+        window.addEventListener('scroll', function() {
+            const nav = document.querySelector('nav');
+            if (window.scrollY > 50) {
+                nav.style.boxShadow = '0 6px 25px rgba(0,0,0,0.4)';
+            } else {
+                nav.style.boxShadow = '0 4px 20px rgba(0,0,0,0.3)';
+            }
+        });
+    </script>
 </body>
 </html>
