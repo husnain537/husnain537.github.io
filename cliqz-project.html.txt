@@ -1,0 +1,606 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cliqz Search Analysis - Husnain Zahoor</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Inter', 'Segoe UI', system-ui, sans-serif;
+            line-height: 1.6;
+            color: #1e293b;
+            background: #ffffff;
+        }
+        
+        :root {
+            --primary: #0f172a;
+            --secondary: #0ea5e9;
+            --accent: #06b6d4;
+            --text: #334155;
+            --light-bg: #f8fafc;
+        }
+        
+        /* Professional Project Header */
+        .project-header {
+            background: linear-gradient(135deg, #1a237e 0%, #283593 100%);
+            color: white;
+            padding: 120px 3rem 60px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .project-header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" preserveAspectRatio="none"><path d="M0,0 L100,0 L100,100 Z" fill="rgba(255, 255, 255, 0.1)"/></svg>');
+            background-size: cover;
+            opacity: 0.2;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .back-button {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            color: #bbdefb;
+            text-decoration: none;
+            font-weight: 600;
+            margin-bottom: 2rem;
+            transition: all 0.3s;
+        }
+        
+        .back-button:hover {
+            gap: 12px;
+            color: white;
+        }
+        
+        .project-title {
+            font-size: 3.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            line-height: 1.2;
+        }
+        
+        .project-subtitle {
+            font-size: 1.3rem;
+            opacity: 0.9;
+            margin-bottom: 2rem;
+            max-width: 800px;
+        }
+        
+        .project-meta {
+            display: flex;
+            gap: 2rem;
+            flex-wrap: wrap;
+            margin-top: 3rem;
+        }
+        
+        .meta-item {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 12px 24px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        
+        .meta-item i {
+            color: #bbdefb;
+            font-size: 1.2rem;
+        }
+        
+        .meta-label {
+            font-size: 0.9rem;
+            opacity: 0.8;
+        }
+        
+        .meta-value {
+            font-weight: 600;
+            font-size: 1.1rem;
+        }
+        
+        /* Project Content */
+        .project-content {
+            padding: 80px 3rem;
+            background: #ffffff;
+        }
+        
+        .content-grid {
+            display: grid;
+            grid-template-columns: 1fr 350px;
+            gap: 4rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .main-content {
+            max-width: 800px;
+        }
+        
+        .sidebar {
+            position: sticky;
+            top: 100px;
+            height: fit-content;
+        }
+        
+        h2 {
+            color: var(--primary);
+            font-size: 2.2rem;
+            margin: 3rem 0 1.5rem;
+            font-weight: 700;
+            position: relative;
+            padding-bottom: 10px;
+        }
+        
+        h2::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 60px;
+            height: 4px;
+            background: linear-gradient(90deg, #283593, #5c6bc0);
+            border-radius: 2px;
+        }
+        
+        h3 {
+            color: var(--primary);
+            font-size: 1.5rem;
+            margin: 2rem 0 1rem;
+            font-weight: 600;
+        }
+        
+        p {
+            color: var(--text);
+            line-height: 1.8;
+            margin-bottom: 1.5rem;
+            font-size: 1.1rem;
+        }
+        
+        ul, ol {
+            color: var(--text);
+            line-height: 1.8;
+            margin-bottom: 1.5rem;
+            padding-left: 1.5rem;
+        }
+        
+        li {
+            margin-bottom: 0.8rem;
+            font-size: 1.1rem;
+        }
+        
+        strong {
+            color: #283593;
+        }
+        
+        /* Info Cards */
+        .info-card {
+            background: #f3f5f9;
+            border-radius: 12px;
+            padding: 2rem;
+            margin: 2rem 0;
+            border-left: 4px solid #283593;
+        }
+        
+        .info-card h4 {
+            color: #283593;
+            font-size: 1.2rem;
+            margin-bottom: 1rem;
+            font-weight: 600;
+        }
+        
+        /* Stats Grid */
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+        
+        .stat-card {
+            background: linear-gradient(135deg, #283593, #5c6bc0);
+            color: white;
+            padding: 1.5rem;
+            border-radius: 12px;
+            text-align: center;
+        }
+        
+        .stat-value {
+            font-size: 2.5rem;
+            font-weight: 700;
+            display: block;
+            line-height: 1;
+        }
+        
+        .stat-label {
+            font-size: 0.95rem;
+            opacity: 0.9;
+            margin-top: 0.5rem;
+        }
+        
+        /* Tech Tags */
+        .tech-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.8rem;
+            margin: 1.5rem 0;
+        }
+        
+        .tech-tag {
+            background: #e8eaf6;
+            color: #283593;
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: 600;
+        }
+        
+        /* Sidebar */
+        .sidebar-card {
+            background: white;
+            border-radius: 12px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+            border: 1px solid #e2e8f0;
+        }
+        
+        .sidebar-card h3 {
+            color: var(--primary);
+            font-size: 1.3rem;
+            margin-bottom: 1.5rem;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #e2e8f0;
+        }
+        
+        .dashboard-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background: linear-gradient(135deg, #283593, #5c6bc0);
+            color: white;
+            padding: 14px 28px;
+            border-radius: 10px;
+            text-decoration: none;
+            font-weight: 600;
+            width: 100%;
+            justify-content: center;
+            transition: all 0.3s;
+            margin-top: 1rem;
+        }
+        
+        .dashboard-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(40, 53, 147, 0.3);
+        }
+        
+        /* Dashboard Preview */
+        .dashboard-preview {
+            background: #f8f9fa;
+            border-radius: 12px;
+            padding: 2rem;
+            margin: 2rem 0;
+            border: 2px dashed #dee2e6;
+            text-align: center;
+        }
+        
+        .dashboard-icon {
+            font-size: 3rem;
+            color: #283593;
+            margin-bottom: 1rem;
+        }
+        
+        /* Footer */
+        footer {
+            background: #1a237e;
+            color: #bbdefb;
+            text-align: center;
+            padding: 3rem 2rem;
+            margin-top: 4rem;
+        }
+        
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin: 1.5rem 0;
+            flex-wrap: wrap;
+        }
+        
+        .footer-link {
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+            padding: 12px 24px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            color: #bbdefb;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.95rem;
+            transition: all 0.3s;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .footer-link:hover {
+            background: rgba(255, 255, 255, 0.2);
+            color: white;
+        }
+        
+        .copyright {
+            margin-top: 2rem;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        /* Responsive */
+        @media (max-width: 1024px) {
+            .content-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .sidebar {
+                position: static;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .project-header {
+                padding: 100px 1.5rem 40px;
+            }
+            
+            .project-title {
+                font-size: 2.5rem;
+            }
+            
+            .project-content {
+                padding: 60px 1.5rem;
+            }
+            
+            .project-meta {
+                flex-direction: column;
+                gap: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Project Header -->
+    <header class="project-header">
+        <div class="container">
+            <a href="index.html" class="back-button">
+                <i class="fas fa-arrow-left"></i> Back to Portfolio
+            </a>
+            <h1 class="project-title">Cliqz Search Engine Analysis</h1>
+            <p class="project-subtitle">User behavior analysis and forecasting for server optimization using 70K+ search queries and Tableau dashboards.</p>
+            
+            <div class="project-meta">
+                <div class="meta-item">
+                    <i class="fas fa-calendar-alt"></i>
+                    <div>
+                        <div class="meta-label">Project Date</div>
+                        <div class="meta-value">January 2025</div>
+                    </div>
+                </div>
+                <div class="meta-item">
+                    <i class="fas fa-tags"></i>
+                    <div>
+                        <div class="meta-label">Category</div>
+                        <div class="meta-value">Search Analytics</div>
+                    </div>
+                </div>
+                <div class="meta-item">
+                    <i class="fas fa-chart-line"></i>
+                    <div>
+                        <div class="meta-label">Tools Used</div>
+                        <div class="meta-value">Tableau, Excel, Forecasting</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Project Content -->
+    <main class="project-content">
+        <div class="content-grid">
+            <!-- Main Content -->
+            <div class="main-content">
+                <h2>Project Overview</h2>
+                <p>This case study involved analyzing user search behavior patterns from the Cliqz search engine to optimize server capacity planning and improve operational efficiency. The project processed over 70,000 search queries to identify usage patterns, forecast demand, and provide actionable insights for technical optimization.</p>
+                
+                <div class="info-card">
+                    <h4>Business Objective</h4>
+                    <p>Analyze user search behavior across different countries, time periods, and query types to forecast search volume and recommend optimal server capacity for maintaining stable performance while minimizing resource costs.</p>
+                </div>
+                
+                <h2>Key Insights & Achievements</h2>
+                
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <span class="stat-value">70K+</span>
+                        <span class="stat-label">Search Queries Analyzed</span>
+                    </div>
+                    <div class="stat-card">
+                        <span class="stat-value">2.7K</span>
+                        <span class="stat-label">Hourly Forecast</span>
+                    </div>
+                    <div class="stat-card">
+                        <span class="stat-value">3K/hr</span>
+                        <span class="stat-label">Recommended Capacity</span>
+                    </div>
+                    <div class="stat-card">
+                        <span class="stat-value">4</span>
+                        <span class="stat-label">Interactive Dashboards</span>
+                    </div>
+                </div>
+                
+                <h3>User Behavior Analysis</h3>
+                <p>The analysis uncovered significant patterns across multiple dimensions:
+                    <ul>
+                        <li><strong>Geographic Patterns:</strong> Identified country-specific search behaviors and peak usage times</li>
+                        <li><strong>Temporal Trends:</strong> Discovered hourly, daily, and weekly search patterns for resource planning</li>
+                        <li><strong>Query Analysis:</strong> Analyzed query length distributions and common search patterns</li>
+                        <li><strong>Device Segmentation:</strong> Differentiated between desktop and mobile search behaviors</li>
+                    </ul>
+                </p>
+                
+                <h3>Forecasting Model Development</h3>
+                <p>Built a time-series forecasting model that predicted approximately <strong>2,700 hourly queries</strong> based on historical patterns. This model enabled:
+                    <ul>
+                        <li>Accurate prediction of peak load times</li>
+                        <li>Resource allocation optimization</li>
+                        <li>Cost-effective server provisioning</li>
+                        <li>Performance stability planning</li>
+                    </ul>
+                </p>
+                
+                <h3>Tableau Dashboard Design</h3>
+                <p>Created comprehensive interactive dashboards in Tableau that provided:
+                    <ul>
+                        <li><strong>Search Volume Trends:</strong> Real-time monitoring of query patterns</li>
+                        <li><strong>Country Comparison:</strong> Geographic analysis of search behaviors</li>
+                        <li><strong>Query-Length Insights:</strong> Analysis of search complexity</li>
+                        <li><strong>Load Prediction:</strong> Forecast visualization for operational planning</li>
+                    </ul>
+                </p>
+                
+                <div class="dashboard-preview">
+                    <div class="dashboard-icon">
+                        <i class="fas fa-chart-bar"></i>
+                    </div>
+                    <h3>Interactive Dashboard</h3>
+                    <p>The Tableau dashboard provides real-time insights into search patterns, user behavior, and forecasted loads.</p>
+                    <a href="https://public.tableau.com/app/profile/husnain.zahoor/viz/CliqzProject/Story" target="_blank" class="dashboard-btn">
+                        <i class="fas fa-external-link-alt"></i> View Live Dashboard
+                    </a>
+                </div>
+                
+                <h2>Methodology & Approach</h2>
+                <p>The analysis followed a structured data science workflow:</p>
+                <ol>
+                    <li><strong>Data Collection:</strong> Aggregated 70,000+ search query records from multiple sources</li>
+                    <li><strong>Data Cleaning:</strong> Used Advanced Excel (XLOOKUP, timestamp conversions) to prepare and integrate datasets</li>
+                    <li><strong>Exploratory Analysis:</strong> Identified patterns across countries, hours, and query types</li>
+                    <li><strong>Time-Series Modeling:</strong> Built forecasting models to predict search volumes</li>
+                    <li><strong>Visualization:</strong> Designed Tableau dashboards for interactive analysis</li>
+                    <li><strong>Recommendation Development:</strong> Created actionable insights for server optimization</li>
+                </ol>
+                
+                <h2>Tools & Technologies</h2>
+                <div class="tech-tags">
+                    <span class="tech-tag">Tableau</span>
+                    <span class="tech-tag">Advanced Excel</span>
+                    <span class="tech-tag">Time-Series Forecasting</span>
+                    <span class="tech-tag">Data Visualization</span>
+                    <span class="tech-tag">XLOOKUP</span>
+                    <span class="tech-tag">Data Cleaning</span>
+                    <span class="tech-tag">Statistical Analysis</span>
+                    <span class="tech-tag">Dashboard Design</span>
+                </div>
+                
+                <h2>Business Impact & Recommendations</h2>
+                <div class="info-card">
+                    <h4>Strategic Recommendations</h4>
+                    <ol>
+                        <li><strong>Server Capacity Optimization:</strong> Recommended ~3,000 queries/hour server capacity for stable performance with 10% buffer</li>
+                        <li><strong>Load Balancing Strategy:</strong> Implemented peak hour identification for efficient resource distribution</li>
+                        <li><strong>Geographic Optimization:</strong> Country-specific recommendations for localized server allocation</li>
+                        <li><strong>Query Processing:</strong> Insights for search algorithm improvements based on query length analysis</li>
+                        <li><strong>Monitoring Framework:</strong> Established real-time dashboard for ongoing performance tracking</li>
+                    </ol>
+                </div>
+                
+                <h2>Value Delivered</h2>
+                <p>This analysis provided Cliqz with:</p>
+                <ul>
+                    <li>Data-driven server capacity recommendations reducing costs by 15%</li>
+                    <li>Improved search engine performance during peak hours</li>
+                    <li>Better understanding of user search behavior patterns</li>
+                    <li>Framework for ongoing optimization and monitoring</li>
+                    <li>Actionable insights for technical and business decision-making</li>
+                </ul>
+            </div>
+            
+            <!-- Sidebar -->
+            <div class="sidebar">
+                <div class="sidebar-card">
+                    <h3>Project Details</h3>
+                    <p><strong>Platform:</strong> Cliqz Search Engine</p>
+                    <p><strong>Duration:</strong> 4 Weeks</p>
+                    <p><strong>Data Size:</strong> 70,000+ Queries</p>
+                    <p><strong>Analysis Type:</strong> User Behavior & Forecasting</p>
+                    <p><strong>Key Deliverables:</strong> Dashboards, Forecasts, Recommendations</p>
+                    
+                    <a href="https://public.tableau.com/app/profile/husnain.zahoor/viz/CliqzProject/Story" target="_blank" class="dashboard-btn">
+                        <i class="fas fa-external-link-alt"></i> View Tableau Dashboard
+                    </a>
+                </div>
+                
+                <div class="sidebar-card">
+                    <h3>Skills Demonstrated</h3>
+                    <ul>
+                        <li>Time-Series Forecasting</li>
+                        <li>Tableau Dashboard Design</li>
+                        <li>User Behavior Analysis</li>
+                        <li>Data Cleaning & Preparation</li>
+                        <li>Server Optimization Planning</li>
+                        <li>Interactive Data Visualization</li>
+                    </ul>
+                </div>
+                
+                <div class="sidebar-card">
+                    <h3>Related Projects</h3>
+                    <p><a href="walmart-project.html" style="color: #283593; text-decoration: none; font-weight: 600;">Walmart Sales Analysis →</a></p>
+                    <p><a href="financial-project.html" style="color: #283593; text-decoration: none; font-weight: 600;">Financial Data Analysis →</a></p>
+                    <p><a href="index.html" style="color: #283593; text-decoration: none; font-weight: 600;">Back to Portfolio →</a></p>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-links">
+                <a href="https://github.com/husnain537" class="footer-link" target="_blank">
+                    <i class="fab fa-github"></i>
+                    GitHub
+                </a>
+                <a href="https://www.linkedin.com/in/husnainzahoor/" class="footer-link" target="_blank">
+                    <i class="fab fa-linkedin-in"></i>
+                    LinkedIn
+                </a>
+                <a href="index.html" class="footer-link">
+                    <i class="fas fa-home"></i>
+                    Portfolio Home
+                </a>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2025 Husnain Zahoor | Data Analyst Portfolio | Cliqz Search Analysis Case Study</p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

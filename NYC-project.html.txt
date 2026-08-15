@@ -1,0 +1,616 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Financial Data Analysis - Husnain Zahoor</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Inter', 'Segoe UI', system-ui, sans-serif;
+            line-height: 1.6;
+            color: #1e293b;
+            background: #ffffff;
+        }
+        
+        :root {
+            --primary: #0f172a;
+            --secondary: #059669;
+            --accent: #10b981;
+            --text: #334155;
+            --light-bg: #f0fdf4;
+        }
+        
+        /* Professional Project Header */
+        .project-header {
+            background: linear-gradient(135deg, #065f46 0%, #047857 100%);
+            color: white;
+            padding: 120px 3rem 60px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .project-header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" preserveAspectRatio="none"><path d="M0,0 L100,0 L100,100 Z" fill="rgba(255, 255, 255, 0.1)"/></svg>');
+            background-size: cover;
+            opacity: 0.2;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .back-button {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            color: #a7f3d0;
+            text-decoration: none;
+            font-weight: 600;
+            margin-bottom: 2rem;
+            transition: all 0.3s;
+        }
+        
+        .back-button:hover {
+            gap: 12px;
+            color: white;
+        }
+        
+        .project-title {
+            font-size: 3.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            line-height: 1.2;
+        }
+        
+        .project-subtitle {
+            font-size: 1.3rem;
+            opacity: 0.9;
+            margin-bottom: 2rem;
+            max-width: 800px;
+        }
+        
+        .project-meta {
+            display: flex;
+            gap: 2rem;
+            flex-wrap: wrap;
+            margin-top: 3rem;
+        }
+        
+        .meta-item {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 12px 24px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        
+        .meta-item i {
+            color: #a7f3d0;
+            font-size: 1.2rem;
+        }
+        
+        .meta-label {
+            font-size: 0.9rem;
+            opacity: 0.8;
+        }
+        
+        .meta-value {
+            font-weight: 600;
+            font-size: 1.1rem;
+        }
+        
+        /* Project Content */
+        .project-content {
+            padding: 80px 3rem;
+            background: #ffffff;
+        }
+        
+        .content-grid {
+            display: grid;
+            grid-template-columns: 1fr 350px;
+            gap: 4rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .main-content {
+            max-width: 800px;
+        }
+        
+        .sidebar {
+            position: sticky;
+            top: 100px;
+            height: fit-content;
+        }
+        
+        h2 {
+            color: var(--primary);
+            font-size: 2.2rem;
+            margin: 3rem 0 1.5rem;
+            font-weight: 700;
+            position: relative;
+            padding-bottom: 10px;
+        }
+        
+        h2::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 60px;
+            height: 4px;
+            background: linear-gradient(90deg, #065f46, #10b981);
+            border-radius: 2px;
+        }
+        
+        h3 {
+            color: var(--primary);
+            font-size: 1.5rem;
+            margin: 2rem 0 1rem;
+            font-weight: 600;
+        }
+        
+        p {
+            color: var(--text);
+            line-height: 1.8;
+            margin-bottom: 1.5rem;
+            font-size: 1.1rem;
+        }
+        
+        ul, ol {
+            color: var(--text);
+            line-height: 1.8;
+            margin-bottom: 1.5rem;
+            padding-left: 1.5rem;
+        }
+        
+        li {
+            margin-bottom: 0.8rem;
+            font-size: 1.1rem;
+        }
+        
+        strong {
+            color: #065f46;
+        }
+        
+        /* Info Cards */
+        .info-card {
+            background: #f0fdf4;
+            border-radius: 12px;
+            padding: 2rem;
+            margin: 2rem 0;
+            border-left: 4px solid #065f46;
+        }
+        
+        .info-card h4 {
+            color: #065f46;
+            font-size: 1.2rem;
+            margin-bottom: 1rem;
+            font-weight: 600;
+        }
+        
+        /* Stats Grid */
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+        
+        .stat-card {
+            background: linear-gradient(135deg, #065f46, #10b981);
+            color: white;
+            padding: 1.5rem;
+            border-radius: 12px;
+            text-align: center;
+        }
+        
+        .stat-value {
+            font-size: 2.5rem;
+            font-weight: 700;
+            display: block;
+            line-height: 1;
+        }
+        
+        .stat-label {
+            font-size: 0.95rem;
+            opacity: 0.9;
+            margin-top: 0.5rem;
+        }
+        
+        /* Tech Tags */
+        .tech-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.8rem;
+            margin: 1.5rem 0;
+        }
+        
+        .tech-tag {
+            background: #d1fae5;
+            color: #065f46;
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: 600;
+        }
+        
+        /* Sidebar */
+        .sidebar-card {
+            background: white;
+            border-radius: 12px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+            border: 1px solid #e2e8f0;
+        }
+        
+        .sidebar-card h3 {
+            color: var(--primary);
+            font-size: 1.3rem;
+            margin-bottom: 1.5rem;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #e2e8f0;
+        }
+        
+        .analysis-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background: linear-gradient(135deg, #065f46, #10b981);
+            color: white;
+            padding: 14px 28px;
+            border-radius: 10px;
+            text-decoration: none;
+            font-weight: 600;
+            width: 100%;
+            justify-content: center;
+            transition: all 0.3s;
+            margin-top: 1rem;
+        }
+        
+        .analysis-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(6, 95, 70, 0.3);
+        }
+        
+        /* Model Preview */
+        .model-preview {
+            background: #f8f9fa;
+            border-radius: 12px;
+            padding: 2rem;
+            margin: 2rem 0;
+            border: 2px dashed #d1fae5;
+        }
+        
+        .model-icon {
+            font-size: 3rem;
+            color: #065f46;
+            margin-bottom: 1rem;
+        }
+        
+        /* Footer */
+        footer {
+            background: #065f46;
+            color: #a7f3d0;
+            text-align: center;
+            padding: 3rem 2rem;
+            margin-top: 4rem;
+        }
+        
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin: 1.5rem 0;
+            flex-wrap: wrap;
+        }
+        
+        .footer-link {
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+            padding: 12px 24px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            color: #a7f3d0;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.95rem;
+            transition: all 0.3s;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .footer-link:hover {
+            background: rgba(255, 255, 255, 0.2);
+            color: white;
+        }
+        
+        .copyright {
+            margin-top: 2rem;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        /* Responsive */
+        @media (max-width: 1024px) {
+            .content-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .sidebar {
+                position: static;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .project-header {
+                padding: 100px 1.5rem 40px;
+            }
+            
+            .project-title {
+                font-size: 2.5rem;
+            }
+            
+            .project-content {
+                padding: 60px 1.5rem;
+            }
+            
+            .project-meta {
+                flex-direction: column;
+                gap: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Project Header -->
+    <header class="project-header">
+        <div class="container">
+            <a href="index.html" class="back-button">
+                <i class="fas fa-arrow-left"></i> Back to Portfolio
+            </a>
+            <h1 class="project-title">Financial Data Analysis & Risk Assessment</h1>
+            <p class="project-subtitle">Comprehensive financial modeling, risk analysis, and investment insights through statistical methods and data visualization.</p>
+            
+            <div class="project-meta">
+                <div class="meta-item">
+                    <i class="fas fa-calendar-alt"></i>
+                    <div>
+                        <div class="meta-label">Project Date</div>
+                        <div class="meta-value">Ongoing</div>
+                    </div>
+                </div>
+                <div class="meta-item">
+                    <i class="fas fa-tags"></i>
+                    <div>
+                        <div class="meta-label">Category</div>
+                        <div class="meta-value">Financial Analytics</div>
+                    </div>
+                </div>
+                <div class="meta-item">
+                    <i class="fas fa-chart-line"></i>
+                    <div>
+                        <div class="meta-label">Tools Used</div>
+                        <div class="meta-value">Power BI, Excel, Statistics</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Project Content -->
+    <main class="project-content">
+        <div class="content-grid">
+            <!-- Main Content -->
+            <div class="main-content">
+                <h2>Project Overview</h2>
+                <p>This comprehensive financial analysis project focuses on risk assessment, investment insight generation, and portfolio optimization through advanced statistical modeling and data visualization techniques. The project demonstrates expertise in financial data processing, predictive modeling, and interactive dashboard creation for investment decision support.</p>
+                
+                <div class="info-card">
+                    <h4>Project Objective</h4>
+                    <p>Develop a robust financial analysis framework for assessing investment risks, identifying market opportunities, and providing data-driven insights for portfolio optimization through statistical modeling and interactive visualization.</p>
+                </div>
+                
+                <h2>Key Analysis Areas</h2>
+                
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <span class="stat-value">Risk</span>
+                        <span class="stat-label">Assessment Models</span>
+                    </div>
+                    <div class="stat-card">
+                        <span class="stat-value">Portfolio</span>
+                        <span class="stat-label">Optimization</span>
+                    </div>
+                    <div class="stat-card">
+                        <span class="stat-value">Market</span>
+                        <span class="stat-label">Trend Analysis</span>
+                    </div>
+                    <div class="stat-card">
+                        <span class="stat-value">Interactive</span>
+                        <span class="stat-label">Dashboards</span>
+                    </div>
+                </div>
+                
+                <h3>Financial Risk Assessment</h3>
+                <p>Comprehensive risk analysis including:
+                    <ul>
+                        <li><strong>Volatility Modeling:</strong> Historical and implied volatility calculations for risk measurement</li>
+                        <li><strong>Value at Risk (VaR):</strong> Statistical techniques for potential loss estimation</li>
+                        <li><strong>Stress Testing:</strong> Scenario analysis under extreme market conditions</li>
+                        <li><strong>Correlation Analysis:</strong> Asset correlation studies for portfolio diversification</li>
+                        <li><strong>Credit Risk Assessment:</strong> Default probability modeling and credit scoring</li>
+                    </ul>
+                </p>
+                
+                <h3>Investment Performance Analysis</h3>
+                <p>Advanced performance metrics and tracking:
+                    <ul>
+                        <li><strong>Return Analysis:</strong> Time-weighted and money-weighted returns calculation</li>
+                        <li><strong>Benchmark Comparison:</strong> Performance against market indices and peers</li>
+                        <li><strong>Risk-Adjusted Returns:</strong> Sharpe ratio, Sortino ratio, and other performance metrics</li>
+                        <li><strong>Attribution Analysis:</strong> Performance breakdown by factors and sectors</li>
+                        <li><strong>Forecasting Models:</strong> Predictive analytics for future performance estimation</li>
+                    </ul>
+                </p>
+                
+                <div class="model-preview">
+                    <div class="model-icon">
+                        <i class="fas fa-chart-pie"></i>
+                    </div>
+                    <h3>Financial Modeling</h3>
+                    <p>Advanced statistical models for financial prediction and risk assessment including time-series analysis, Monte Carlo simulations, and regression models for investment decision support.</p>
+                </div>
+                
+                <h3>Market Trend Analysis</h3>
+                <p>Comprehensive market analysis capabilities:
+                    <ul>
+                        <li><strong>Technical Analysis:</strong> Pattern recognition and indicator-based insights</li>
+                        <li><strong>Fundamental Analysis:</strong> Company financials and economic indicator analysis</li>
+                        <li><strong>Sentiment Analysis:</strong> Market sentiment indicators and news impact assessment</li>
+                        <li><strong>Sector Analysis:</strong> Industry-specific performance and trend identification</li>
+                        <li><strong>Economic Indicators:</strong> Macroeconomic factor impact analysis</li>
+                    </ul>
+                </p>
+                
+                <h2>Methodology & Approach</h2>
+                <p>The financial analysis follows a structured quantitative approach:</p>
+                <ol>
+                    <li><strong>Data Collection:</strong> Aggregation of financial datasets from multiple sources</li>
+                    <li><strong>Data Cleaning:</strong> Processing and validation of financial time-series data</li>
+                    <li><strong>Statistical Modeling:</strong> Application of quantitative methods for analysis</li>
+                    <li><strong>Risk Modeling:</strong> Development of risk assessment frameworks</li>
+                    <li><strong>Visualization:</strong> Creation of interactive dashboards for insight presentation</li>
+                    <li><strong>Insight Generation:</strong> Deriving actionable recommendations from analysis</li>
+                </ol>
+                
+                <h2>Tools & Technologies</h2>
+                <div class="tech-tags">
+                    <span class="tech-tag">Power BI</span>
+                    <span class="tech-tag">Advanced Excel</span>
+                    <span class="tech-tag">Statistical Analysis</span>
+                    <span class="tech-tag">Financial Modeling</span>
+                    <span class="tech-tag">Risk Assessment</span>
+                    <span class="tech-tag">Data Visualization</span>
+                    <span class="tech-tag">Time-Series Analysis</span>
+                    <span class="tech-tag">Portfolio Optimization</span>
+                </div>
+                
+                <h2>Dashboard & Visualization Features</h2>
+                <div class="info-card">
+                    <h4>Interactive Financial Dashboard</h4>
+                    <p>The Power BI dashboard provides comprehensive financial insights including:</p>
+                    <ul>
+                        <li><strong>Real-time Portfolio Tracking:</strong> Live monitoring of investment performance</li>
+                        <li><strong>Risk Metrics Dashboard:</strong> Interactive visualization of risk indicators</li>
+                        <li><strong>Market Analysis Tools:</strong> Comparative analysis and trend identification</li>
+                        <li><strong>Performance Attribution:</strong> Breakdown of returns by factors and segments</li>
+                        <li><strong>Forecast Visualization:</strong> Graphical representation of predictive models</li>
+                    </ul>
+                </div>
+                
+                <h2>Business Value & Applications</h2>
+                <p>This financial analysis framework provides significant value for:</p>
+                <ul>
+                    <li><strong>Investment Decision Support:</strong> Data-driven insights for portfolio allocation</li>
+                    <li><strong>Risk Management:</strong> Comprehensive risk assessment and mitigation strategies</li>
+                    <li><strong>Performance Monitoring:</strong> Ongoing tracking and evaluation of investments</li>
+                    <li><strong>Strategic Planning:</strong> Market opportunity identification and strategic positioning</li>
+                    <li><strong>Compliance & Reporting:</strong> Regulatory compliance and stakeholder reporting</li>
+                </ul>
+                
+                <h2>Future Development</h2>
+                <p>This project is continuously evolving with planned enhancements including:</p>
+                <ul>
+                    <li>Machine learning integration for predictive analytics</li>
+                    <li>Real-time data integration for live market analysis</li>
+                    <li>Advanced scenario modeling capabilities</li>
+                    <li>Mobile-responsive dashboard development</li>
+                    <li>Automated reporting and alert systems</li>
+                </ul>
+            </div>
+            
+            <!-- Sidebar -->
+            <div class="sidebar">
+                <div class="sidebar-card">
+                    <h3>Project Details</h3>
+                    <p><strong>Domain:</strong> Financial Analytics</p>
+                    <p><strong>Status:</strong> Ongoing Development</p>
+                    <p><strong>Primary Focus:</strong> Risk & Investment Analysis</p>
+                    <p><strong>Key Deliverables:</strong> Models, Dashboards, Insights</p>
+                    <p><strong>Analysis Type:</strong> Quantitative Financial Analysis</p>
+                    
+                    <button class="analysis-btn" onclick="alert('This project is currently in active development. Full analysis available upon request.')">
+                        <i class="fas fa-chart-line"></i> View Analysis Preview
+                    </button>
+                </div>
+                
+                <div class="sidebar-card">
+                    <h3>Skills Demonstrated</h3>
+                    <ul>
+                        <li>Financial Risk Modeling</li>
+                        <li>Statistical Analysis</li>
+                        <li>Power BI Dashboard Design</li>
+                        <li>Portfolio Optimization</li>
+                        <li>Investment Analysis</li>
+                        <li>Quantitative Methods</li>
+                    </ul>
+                </div>
+                
+                <div class="sidebar-card">
+                    <h3>Related Projects</h3>
+                    <p><a href="walmart-project.html" style="color: #065f46; text-decoration: none; font-weight: 600;">Walmart Sales Analysis →</a></p>
+                    <p><a href="cliqz-project.html" style="color: #065f46; text-decoration: none; font-weight: 600;">Cliqz Search Analysis →</a></p>
+                    <p><a href="index.html" style="color: #065f46; text-decoration: none; font-weight: 600;">Back to Portfolio →</a></p>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-links">
+                <a href="https://github.com/husnain537" class="footer-link" target="_blank">
+                    <i class="fab fa-github"></i>
+                    GitHub
+                </a>
+                <a href="https://www.linkedin.com/in/husnainzahoor/" class="footer-link" target="_blank">
+                    <i class="fab fa-linkedin-in"></i>
+                    LinkedIn
+                </a>
+                <a href="index.html" class="footer-link">
+                    <i class="fas fa-home"></i>
+                    Portfolio Home
+                </a>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2025 Husnain Zahoor | Data Analyst Portfolio | Financial Analysis Case Study</p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
